@@ -1,0 +1,18 @@
+import { put, call } from 'redux-saga';
+import { startLoading, endLoading } from './store/modules/loading';
+
+export default function createRequestSaga(actions, api) {
+    return function* requestSaga({ payload }) {
+        try {
+            yield put(startLoading({ type: actions.TYPE }));
+            const result = yield call(api, payload);
+            yield put(actions.success({ result }));
+        } catch (e) {
+            yield put(actions.failure({ error: `${e.name} : ${e.message}` }));
+        } finally {
+            yield put(endLoading({ type: actions.TYPE }));
+        }
+    };
+}
+
+
