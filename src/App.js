@@ -1,7 +1,7 @@
 
 import { Link, Route } from 'react-router-dom';
-import './App.css';
 import Home from './component/Home';
+import Login from './component/Login';
 
 function App() {
   return (
@@ -11,10 +11,11 @@ function App() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/hi">Hi</Link>
+          <Link to="/Login">login</Link>
         </li>
       </ul>
       <Route path="/" exact component={Home} />
+      <Route path="/Login" exact component={Login} />
     </>
   );
 }
