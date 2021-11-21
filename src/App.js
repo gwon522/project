@@ -14,9 +14,7 @@ function App() {
           <Link to="/hi">Hi</Link>
         </li>
       </ul>
-      <Route path="/" exact>
-        <Home />
-      </Route>
+      <Route path="/" exact component={Home} />
     </>
   );
 }
