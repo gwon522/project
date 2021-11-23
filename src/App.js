@@ -1,21 +1,17 @@
 
-import { Link, Route } from 'react-router-dom';
-import Home from './component/Home';
-import Login from './component/Login';
+import { Link, Route, BrowserRouter as brr } from 'react-router-dom';
+import Home from './component/Home/Home';
+import Login from './component/Login/Login';
 
 function App() {
   return (
     <>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/Login">login</Link>
-        </li>
-      </ul>
-      <Route path="/" exact component={Home} />
-      <Route path="/Login" exact component={Login} />
+      <brr basename={window.location.pathname || ''}>
+        <switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/Login" component={Login} />
+        </switch>
+      </brr>
     </>
   );
 }
