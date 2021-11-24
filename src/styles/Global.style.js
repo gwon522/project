@@ -26,8 +26,8 @@ const theme = {
     tabletS: `(max-width:${size.tabletS})`,
     tabletM: `(max-width:${size.tabletM})`,
     tabletL: `(max-width:${size.tabletL})`,
-    laptop: `(max-width:${size.laptop})`,
-    desktop: `(max-width:${size.desktop})`,
+    laptop: `(min-width:${size.laptop})`,
+    desktop: `(min-width:${size.desktop})`,
 };
 
 export default { GlobalStyle, theme };
