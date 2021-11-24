@@ -6,18 +6,13 @@ import App from './App';
 
 import configureStore from './store/index';
 
-
-// const store = configureStore();
+const store = configureStore();
 
 ReactDOM.render(
-
-  // <Provider store={store}>
-  <Router>
-    <App />
-  </Router>
-  // </Provider>
-  ,
-  document.getElementById('root')
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
+    document.getElementById('root'),
 );
-
-
