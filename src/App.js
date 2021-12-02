@@ -1,19 +1,17 @@
 
-import Join from 'component/Join/Join';
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
-import Home from './component/Home/Home';
-import Login from './component/Login/Login';
+import { Footer } from 'component/Footer';
+import { Nav } from 'component/Nav';
+import { Route } from 'react-router-dom';
+import { Home, Login, Signup } from './pages/index';
 
 function App() {
   return (
     <>
-      <Router basename={window.location.pathname || ''}>
-        <switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Join" component={Join} />
-        </switch>
-      </Router>
+      <Nav />
+      <Route exact path="/" component={Home} />
+      <Route path="/Login" component={Login} />
+      <Route path="/Signup" component={Signup} />
+      <Footer />
     </>
   );
 }
