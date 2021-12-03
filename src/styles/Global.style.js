@@ -14,18 +14,7 @@ const GlobalStyle = createGlobalStyle`
         font-size : 14px;
     }
 `;
-const size = {
-    mobile: '767px',
-    desktop: '1023px',
-};
 
-const theme = {
-    comFontSize: '',
-    backgroundColor: '',
-    mobile: `(max-width:${size.mobile})`,
-    tablet: `(max-width:${size.desktop})`,
-    // desktop: `(min-width:${size.desktop})`,
-};
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { GlobalStyle, theme };
+export default { GlobalStyle};

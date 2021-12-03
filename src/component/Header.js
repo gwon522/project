@@ -29,7 +29,7 @@ const Item = styled.li`
 `
 
 
-export const Nav = () => {
+export const Header = () => {
     return (
         <Container>
             <Logo>
