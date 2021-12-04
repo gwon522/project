@@ -1,68 +1,67 @@
-import styled from "styled-components";
 import { Link } from 'react-router-dom';
-
-const Container = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 5rem;
-`
-
-const Logo = styled.div`
-    width: 15rem;
-    height: 7vh;
-    justify-content: center;
-    align-items: center;
-`
-const List = styled.ul`
-    list-style: none;
-    display: flex;
-    margin: 1rem 0;
-    align-items: center;
-    a{
-        text-decoration: none;
-    }
-    
-`
-const Item = styled.li`
-    margin: 0 1rem;
-    text-decoration: none;
-`
-
+import { GoThreeBars } from 'react-icons/go'
+import { Container, Logo, List, Item, ListBox, MenuBar, WebList, MobList } from "../styles/Header.style";
 
 export const Header = () => {
+
+    const clickMenu = () => {
+        console.log('메뉴 클릭')
+    }
+
     return (
-        <Container>
-            <Logo>
-                <Link to="/">로고</Link>
-            </Logo>
-            <div style={{ display: 'flex' }}>
-                <List>
+        <>
+            <Container>
+                <Logo>
+                    <Link to="/">로고</Link>
+                </Logo>
+                <ListBox>
+                    <WebList>
+                        <Item>
+                            <Link to="/">메뉴 1</Link>
+                        </Item>
+                        <Item>
+                            <Link to="/Login">메뉴 2</Link>
+                        </Item>
+                        <Item>
+                            <Link to="/">메뉴 3</Link>
+                        </Item>
+                        <Item>
+                            <Link to="/">메뉴 4</Link>
+                        </Item>
+                    </WebList>
+                    <WebList>
+                        <Item>
+                            <Link to="/Login">
+                                로그인
+                            </Link>
+                        </Item>
+                        <Item>
+                            <Link to="/Join">
+                                회원가입
+                            </Link>
+                        </Item>
+                    </WebList>
+                    <MenuBar href="#">
+                        <GoThreeBars onClick={clickMenu} />
+                    </MenuBar>
+                </ListBox>
+            </Container >
+            <ListBox className="mobileMenu">
+                <MobList>
                     <Item>
-                        <Link to="/Login">
-                            로그인
-                        </Link>
+                        <Link to="/">메뉴 1</Link>
                     </Item>
                     <Item>
-                        <Link to="/Join">
-                            회원가입
-                        </Link>
-                    </Item>
-                </List>
-                <List>
-                    <Item>
-                        메뉴 1
+                        <Link to="/Login">메뉴 2</Link>
                     </Item>
                     <Item>
-                        메뉴 2
+                        <Link to="/">메뉴 3</Link>
                     </Item>
                     <Item>
-                        메뉴 3
+                        <Link to="/">메뉴 4</Link>
                     </Item>
-                    <Item>
-                        메뉴 4
-                    </Item>
-                </List>
-            </div>
-        </Container >
+                </MobList>
+            </ListBox>
+        </>
     );
 };

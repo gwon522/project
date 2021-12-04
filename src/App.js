@@ -2,20 +2,20 @@
 import { Footer } from 'component/Footer';
 import { Header } from 'component/Header';
 import { Route } from 'react-router-dom';
-import { Layout } from 'styles/CommonVariables';
+import { Layout, MainContainer } from 'styles/Global.style';
 import { Home, Login, Signup } from './pages/index';
 
 function App() {
   return (
-      <Layout>
-        <Header />
-        <mainContainer>
-          <Route exact path="/" component={Home} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Signup" component={Signup} />
-        </mainContainer>
-        <Footer />
-      </Layout>
+    <Layout>
+      <Header />
+      <MainContainer>
+        <Route exact path="/" component={Home} />
+        <Route path="/Login" component={Login} />
+        <Route path="/Signup" component={Signup} />
+      </MainContainer>
+      <Footer />
+    </Layout>
   );
 }
 
