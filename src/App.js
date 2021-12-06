@@ -1,21 +1,23 @@
 
-import { Footer } from 'component/Footer';
-import { Header } from 'component/Header';
+import {Header, Footer} from 'component/index'
 import { Route } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
 import { Home, Login, Signup } from './pages/index';
 
 function App() {
   return (
+    <>
     <Layout>
-      <Header />
+      <Header/>
       <MainContainer>
         <Route exact path="/" component={Home} />
         <Route path="/Login" component={Login} />
         <Route path="/Signup" component={Signup} />
       </MainContainer>
-      <Footer />
+      <Footer/>
     </Layout>
+    
+    </>
   );
 }
 

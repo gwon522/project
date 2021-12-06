@@ -4,6 +4,7 @@ function HomeComponent() {
     return (
         <div>
             <p>mainPage</p>
+            <button> click me</button>
         </div>
     );
 }

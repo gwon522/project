@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaGithub } from 'react-icons/fa';
+import { footerHeight } from 'styles/Global.style';
 
 const Container = styled.div`
     position: relative;
@@ -7,6 +8,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    height:${footerHeight}
 `;
 const Name = styled.p`
     margin-right: 1.2rem;

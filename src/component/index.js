@@ -1,11 +1,4 @@
-import React from "react";
+import {Footer} from './Footer'
+import {Header} from './Header'
 
-function index() {
-
-    return (
-        <>
-        </>
-    )
-}
-
-export default index;
+export  {Footer,Header};

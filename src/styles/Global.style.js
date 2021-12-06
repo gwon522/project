@@ -16,6 +16,9 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const headerHeight = '7vh';
+export const footerHeight = '4vh';
+
+export const width = '90vw';
 
 export const headerColor = "#7F00FF";
 

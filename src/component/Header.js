@@ -20,9 +20,6 @@ export const Header = () => {
                             <Link to="/">메뉴 1</Link>
                         </Item>
                         <Item>
-                            <Link to="/Login">메뉴 2</Link>
-                        </Item>
-                        <Item>
                             <Link to="/">메뉴 3</Link>
                         </Item>
                         <Item>
@@ -50,9 +47,6 @@ export const Header = () => {
                 <MobList>
                     <Item>
                         <Link to="/">메뉴 1</Link>
-                    </Item>
-                    <Item>
-                        <Link to="/Login">메뉴 2</Link>
                     </Item>
                     <Item>
                         <Link to="/">메뉴 3</Link>
