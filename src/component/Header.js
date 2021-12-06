@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { GoThreeBars } from 'react-icons/go'
-import { Container, Logo, List, Item, ListBox, MenuBar, WebList, MobList } from "../styles/Header.style";
+import { FaBars, FaRegUser } from 'react-icons/fa'
+import { Container, Logo, Item, ListBox, MenuBar, WebList, MobList } from "../styles/Header.style";
+import { Login } from 'pages';
 
 export const Header = () => {
-
     const clickMenu = () => {
         console.log('메뉴 클릭')
     }
@@ -28,9 +28,9 @@ export const Header = () => {
                     </WebList>
                     <WebList>
                         <Item>
-                            <Link to="/Login">
-                                로그인
-                            </Link>
+                            <FaRegUser onClick={() => {
+                                <Login visible />
+                            }} />
                         </Item>
                         <Item>
                             <Link to="/Join">
@@ -39,7 +39,7 @@ export const Header = () => {
                         </Item>
                     </WebList>
                     <MenuBar href="#">
-                        <GoThreeBars onClick={clickMenu} />
+                        <FaBars onClick={clickMenu} />
                     </MenuBar>
                 </ListBox>
             </Container >

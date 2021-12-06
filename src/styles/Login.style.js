@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-    margin-top: 5rem;
-    padding: 0 25rem;
+const LoginWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 0 0;
+    height: inherit;
 `;
 
 const Input = styled.input`
@@ -36,4 +38,4 @@ const Button = styled.div`
     background-color: #efefef;
     `}
 `;
-export { Container, Input, Button };
+export { LoginWrapper, Input, Button };
