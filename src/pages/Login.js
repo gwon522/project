@@ -15,7 +15,7 @@ function LoginComponent(visible) {
                     name="pw"
                     id="pw"
                 />
-                <Button>로그인</Button>
+                <Button> 로그인</Button>
             </LoginWrapper>
         </Modal>
     );

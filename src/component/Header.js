@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import { FaBars, FaRegUser } from 'react-icons/fa'
 import { Container, Logo, Item, ListBox, MenuBar, WebList, MobList } from "../styles/Header.style";
-import { Login } from 'pages';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
-    const clickMenu = () => {
-        console.log('메뉴 클릭')
-    }
 
     return (
         <>
             <Container>
+
                 <Logo>
                     <Link to="/">로고</Link>
                 </Logo>
@@ -28,9 +26,7 @@ export const Header = () => {
                     </WebList>
                     <WebList>
                         <Item>
-                            <FaRegUser onClick={() => {
-                                <Login visible />
-                            }} />
+                            <FaRegUser onClick={() => { }} />
                         </Item>
                         <Item>
                             <Link to="/Join">
@@ -39,7 +35,7 @@ export const Header = () => {
                         </Item>
                     </WebList>
                     <MenuBar href="#">
-                        <FaBars onClick={clickMenu} />
+                        <FaBars onClick={() => { console.log('clicked') }} />
                     </MenuBar>
                 </ListBox>
             </Container >
