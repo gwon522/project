@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, LoginWrapper, Input } from 'styles/Login.style';
 
-function SignupComponent() {
+const SignupComponent = () => {
     return (
         <LoginWrapper>
             <text>회원가입</text>

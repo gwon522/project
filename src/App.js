@@ -1,26 +1,36 @@
 
 import { Header, Footer } from 'component/index'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
-import { Home, Login, Signup } from './pages/index';
+import { Home, Login, NotFound, Signup } from './pages/index';
+import { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const loginHandler = (id, passward) => {
+    console.log('로그인 버튼 눌러서 메서드 실행됨')
+    setIsLoggedIn(true);
+  }
+
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+  }
+
   return (
-    <>
-      <Layout>
-        <Header />
-        <MainContainer>
+    <Layout>
+      <Header onLogout={logoutHandler} />
+      {/* <MainContainer>
+        <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/Login" component={Login} />
           <Route path="/Signup" component={Signup} />
-          <Route path="*"  //component={NotFound}
+          <Route path="*" component={NotFound}
             status={404} />
-        </MainContainer>
-        <Footer />
-        <Login visible={false} />
-      </Layout>
-
-    </>
+        </Switch>
+      </MainContainer>
+      <Footer /> */}
+    </Layout>
   );
 }
 

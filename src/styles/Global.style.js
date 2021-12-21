@@ -1,18 +1,17 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
+
 export const GlobalStyle = createGlobalStyle`
-    ${reset}
-    a{
-        text-decoration:none;
-        color : inherit;
-    }
-    *{
+
+    * {
+        margin:0;
+        padding:0;
         box-sizing: border-box;
-    }
-    body{
+        font-family: "Roboto","Noto Sans KR",AppleSDGothicNeo-Regular,"Malgun Gothic","맑은 고딕",dotum,"돋움",sans-serif;
         font-size : 14px;
     }
+
 `;
 
 export const headerHeight = '7vh';
