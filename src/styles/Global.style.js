@@ -1,6 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
-
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -11,7 +9,6 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Roboto","Noto Sans KR",AppleSDGothicNeo-Regular,"Malgun Gothic","맑은 고딕",dotum,"돋움",sans-serif;
         font-size : 14px;
     }
-
 `;
 
 export const headerHeight = '7vh';
@@ -23,14 +20,15 @@ export const headerColor = "#7F00FF";
 
 const size = {
     mobile: '768px',
-    desktop: '1024px',
+    tablet: '1100px',
+    desktop: '1920px',
 };
 
-export const device = {
+export const Device = {
     comFontSize: '',
     backgroundColor: '',
-    mobile: `(max-width:${size.mobile})`,
-    tablet: `(max-width:${size.desktop})`,
+    mobile: `(min-width:${size.mobile})`,
+    tablet: `(min-width:${size.tablet})`,
     desktop: `(min-width:${size.desktop})`,
 };
 
@@ -38,12 +36,22 @@ export const Layout = styled.div`
     display : flex;
     flex-direction : column;
     height : 100vh;
-
+    /* background-color: gray; */
+    /* @media ${Device.mobile}{ 
+        margin: 0 0rem;
+        width: 100%;
+        overflow-x: hidden;
+    } */
 
 `;
 export const MainContainer = styled.div`
-    flex:1;
-    padding :0.5rem 5rem 0 5rem; 
+    /* flex:1;
+    padding :2rem 5rem; 
+    margin-top: 8px;
+    @media ${Device.tablet}{
+
+    } */
+    display:block;
 `
 
 

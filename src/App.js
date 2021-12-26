@@ -20,7 +20,7 @@ const App = () => {
   return (
     <Layout>
       <Header onLogout={logoutHandler} />
-      {/* <MainContainer>
+      <MainContainer>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/Login" component={Login} />
@@ -29,7 +29,7 @@ const App = () => {
             status={404} />
         </Switch>
       </MainContainer>
-      <Footer /> */}
+      <Footer />
     </Layout>
   );
 }
