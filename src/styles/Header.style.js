@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import { css } from "styled-components";
-import { device } from "./Global.style";
+import { Device } from "./Global.style";
 
 export const Container = styled.div`
     display: flex;
     padding: 0 5%;
     border-bottom: 1px solid #d4d4d4;
     align-items: center;
-    @media ${device.mobile}{
-        margin: 0 0rem;
-    }
+    height: 80px;
+
+    @media ${Device.tablet}{ 
+        padding: 0 15%;
+    } 
+    @media ${Device.desktop}{
+        padding : 0 25%;
+    } 
     a{
         color: black;
         text-decoration: none;
@@ -19,7 +24,7 @@ export const Logo = styled.h1`
     font-family: 'Roboto', sans-serif;
     display:flex;
     width: 15rem;
-    height: 6.5vh;
+    height: 40px;
     align-items: center;
     font-size: 2.75rem;
     font-weight: bold;
@@ -51,7 +56,6 @@ export const ItemList = styled.ul`
     margin: 1rem 0;
     padding:0;
     align-items: center;
-    
 `;
 export const Item = styled.div`
     margin: 0 1.25rem;
@@ -59,7 +63,6 @@ export const Item = styled.div`
 `;
 export const Wrap = styled.div`
     display:flex;
-
 `
 export const SearchBox = styled.input`
     font-size: 0.925rem;
@@ -69,6 +72,13 @@ export const SearchBox = styled.input`
     height: 2.5rem;
     padding-left: 2rem;
     margin-right: 2rem;
+    display :none;
+    @media ${Device.tablet}{ 
+        display:none;
+    }   
+    @media ${Device.desktop}{ 
+        display:inline-block;
+    }   
 `
 export const SearchWrap = styled.section`
     display:flex;
@@ -81,14 +91,24 @@ export const ActionWrap = styled.div`
     display:flex;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
 `
 export const ItemButton = styled.button`
     border:none;
     font-weight: bold;
-    font-size:1rem;
+    font-size:0.825rem;
     cursor:pointer;
-    padding:0.75rem 1.5rem;
+    padding:0.5rem 0.825rem;
     margin-right: 10px;
+
+    @media ${Device.tablet}{ 
+        padding:0.625rem 1rem;
+        font-size:1rem;
+    }   
+    @media ${Device.desktop}{ 
+        padding:0.75rem 1.5rem;
+        font-size:1rem;
+    }   
     
     ${(props) =>
         props.bgColor === 'white' && css`

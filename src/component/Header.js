@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaRegUser, FaSearch } from 'react-icons/fa'
-import { Container, Logo, Item, ListBox, WebList, ItemButton, SearchWrap, ActionWrap, Wrap, SearchBox, ItemList } from "../styles/Header.style";
-
+import { Container, Logo, Item, ListBox, ItemButton, ActionWrap, Wrap, ItemList } from "../styles/Header.style";
+import { Search } from './Search';
 
 export const Header = (props) => {
-    const [searchValue, setSearchValue] = useState('');
-
-    const onChangeHandler = (e) => {
-        setSearchValue(e.target.value);
-    }
-    const onKeyPress = (e) => {
-        if (e.key == "Enter") {
-            //서치 작업 시켜주면됨
-            console.log('enter key 맞음', searchValue);
-            searchValue.trim() == '' && console.log('공백임')
-        }
-    }
-
     return (
         <Container>
             <Logo>
@@ -30,17 +16,14 @@ export const Header = (props) => {
                         <Link to="/">홈</Link>
                     </Item>
                     <Item>
-                        <Link to="/menu1">리뷰</Link>
+                        <Link to="/review">리뷰</Link>
                     </Item>
                 </ItemList>
                 <Wrap>
-                    <SearchWrap role="search">
-                        <FaSearch style={{ position: 'relative', left: '1.75rem' }} />
-                        <SearchBox type="search" placeholder="관심있는 내용을 검색해보세요!" value={searchValue} onChange={onChangeHandler} onKeyPress={onKeyPress} />
-                    </SearchWrap>
+                    <Search />
                     <ActionWrap>
-                        <ItemButton bgColor={'#da3238'} color={'white'} onClick={() => { }}>글쓰기</ItemButton>
-                        <ItemButton bgColor={'white'} color={'black'} onClick={() => { }}>로그인</ItemButton>
+                        <ItemButton bgColor={'#da3238'} color={'white'} onClick={() => { alert('글쓰기') }}>글쓰기</ItemButton>
+                        <ItemButton bgColor={'white'} color={'black'} onClick={() => { alert('로그인') }}> 로그인</ItemButton>
                     </ActionWrap>
                 </Wrap>
 
@@ -48,3 +31,4 @@ export const Header = (props) => {
         </Container >
     );
 };
+
