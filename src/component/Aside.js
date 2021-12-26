@@ -1,49 +1,17 @@
-import styled from "styled-components"
-import { Link } from 'react-router-dom';
+import { AsideWrap } from "styles/Aside.style";
+import { RankData } from "utils/TempData";
+import { Banner } from "./Aside/Banner";
+import { Chart } from "./Aside/Chart";
+import { ChartItem } from "./Aside/ChartItem";
 
 export const Aside = () => {
-    const AsideWrap = styled.aside`
-        margin-left: 64px;
-        flex-direction: column;
-    `
-    const AsideChart = styled.div`
-        padding : 15px 15px;
-    `
-    const RankTitle = styled.h1`
-        font-weight: 700;
-        font-size: 20px;
-        margin : 0;
-        padding-left : 10px;
-        padding-bottom : 8px;
-    `
-    const UpIcon = styled.span`
-        
-    `
-    const DownIcon = styled.span`
-        
-    `
+
     return (
         <AsideWrap>
-            <div> 광고 이미지 자리 </div>
-            <AsideChart>
-                <RankTitle>실시간 인기</RankTitle>
-                <p>
-                    <em>1</em>
-                    <Link to="/">실시간 인기 회사</Link>
-                    <span>up</span>
-                </p>
-                <p>
-                    <em>2</em>
-                    <Link to="/">실시간 인기 회사</Link>
-                    <span>up</span>
-                </p>
-                <p>
-                    <em>3</em>
-                    <Link to="/">실시간 인기 회사</Link>
-                    <span>up</span>
-                </p>
-
-            </AsideChart>
-        </AsideWrap>
+            <Banner />
+            <Chart>
+                {RankData.map(data => <ChartItem key={data.seq} data={data} />)}
+            </Chart>
+        </AsideWrap >
     )
 }
