@@ -25,6 +25,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/Login" component={Login} />
           <Route path="/Signup" component={Signup} />
+          {/* <Route path="/topic/:id" component={}/>  */}
           <Route path="*" component={NotFound}
             status={404} />
         </Switch>

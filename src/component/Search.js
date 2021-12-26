@@ -1,29 +1,8 @@
-import styled from 'styled-components'
-import { FaSearch } from 'react-icons/fa';
-import { useState } from 'react';
+import { FiSearch } from 'react-icons/fi'
+import React, { useState } from 'react';
+import { Button, SearchInput, SearchSection } from 'styles/Search.style';
 
-const SearchSection = styled.section`
-    position: relative;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-`
-const Button = styled.button`
-    border: none;
-    background-color: transparent;
-    position:absolute;
-    left:8px;
-    top:12px;
-    color: black;
-`;
-const SearchInput = styled.input`
-    border-radius: 25px;
-    border : solid black 2px;
-    width : 100%;
-    height: 50px;
-    padding-left: 30px;
-`;
+
 
 export const Search = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -49,12 +28,12 @@ export const Search = () => {
         <SearchSection>
             <SearchInput
                 type="search"
-                placeholder='관심있는 내용을 입력하세요!'
+                placeholder='관심있는 내용을 검색해보세요!'
                 onKeyPress={onKeyPressHandler}
                 onChange={onChangeHandler}
             />
             <Button onClick={onClickHandler}>
-                <FaSearch size="15" />
+                <FiSearch size="15" cursor="pointer" />
             </Button>
         </SearchSection>
     )
