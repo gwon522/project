@@ -1,14 +1,12 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
-
-    * {
-        margin:0;
-        padding:0;
-        box-sizing: border-box;
-        font-family: "Roboto","Noto Sans KR",AppleSDGothicNeo-Regular,"Malgun Gothic","맑은 고딕",dotum,"돋움",sans-serif;
-        font-size : 14px;
-    }
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Roboto","Noto Sans KR",AppleSDGothicNeo-Regular,"Malgun Gothic","맑은 고딕",dotum,"돋움",sans-serif;
+    font-size : 14px;
 `;
 
 export const headerHeight = '7vh';
@@ -31,6 +29,18 @@ export const Device = {
     tablet: `(min-width:${size.tablet})`,
     desktop: `(min-width:${size.desktop})`,
 };
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
+    touch-action: manipulation;
+
+    &:hover, &:active, &:focus {
+        text-decoration: none;
+        color: #222;
+    }
+`
 
 export const Layout = styled.div`
     display : flex;
