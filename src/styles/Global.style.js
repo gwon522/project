@@ -41,6 +41,30 @@ export const StyledLink = styled(Link)`
         color: #222;
     }
 `
+export const WrapInfo = styled.div`
+    position: relative;
+    margin-top: 8px;
+    font-size: 12px;
+
+    @media screen and (min-width : 1100px){
+        margin-top: 15px;
+    }
+
+    ${StyledLink}{
+        margin-right: 14px;
+        color:#94969b;
+        vertical-align: top;
+
+        &::before{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin:-1px 3px 1px 0;
+            vertical-align: middle;
+            content: "";
+        }
+    }
+`
 
 export const Layout = styled.div`
     display : flex;

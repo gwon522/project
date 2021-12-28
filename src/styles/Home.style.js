@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { StyledLink, WrapInfo } from './Global.style';
+
 
 export const MainWrap = styled.div`
     display: flex;
@@ -114,4 +116,167 @@ export const BestTopic = styled(TopicList)`
             margin-left:0px;
         }
     }
+`
+
+export const Article = styled.div`
+    display: block;
+    color: #222;
+    font-size: 14px;
+    word-wrap: break-word;
+    line-height: 1.25em;
+    margin: 0;
+    position: relative;
+    padding: 12px 0;
+    border-bottom:1px solid #f5f5f5;
+
+    @media screen and (min-width : 1100px){
+        padding: 0;
+        border-bottom: none;
+
+        &:first-of-type{
+            padding-top: 9px;
+        }
+    }
+`
+
+export const ArticleBest = styled(Article)`
+    padding: 11px 0;
+
+    @media screen and (min-width : 1100px){
+        display: flex;
+        margin-top: 2px;
+        padding: 0 120px 0 0;
+
+        &:first-of-type{
+            padding-top: 11px;
+        }
+    }
+`
+export const ArticleTag = styled.span`
+    display: none;
+
+    ${StyledLink}{
+        color: #94969b;
+        cursor: pointer;
+        text-decoration: none;
+        
+        @media screen and (min-width : 1100px){
+            display: inline-block;
+            padding:0 6px 0 7px;
+        }
+    }
+`
+const img = css`
+    background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+    background-size: 600px 900px;
+    background-position: -166px -600px;
+`
+const link = css`
+    background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+    background-size: 600px 900px;
+    background-position: -114px -600px;
+`
+const none = css`
+    background: none;
+`
+export const ArticleBestTag = styled(ArticleTag)`
+    display: block;
+    font-size: 12px;
+
+    @media screen and (min-width : 1100px){
+        display:block;
+        height:20px;
+        margin: 5px 4px 0 0;
+        border : 1px solid #eee;
+        vertical-align: middle;
+        line-height: 18px;
+        box-sizing: border-box;
+        white-space: nowrap;
+    }
+`
+export const ArticleTitle = styled(StyledLink)`
+    display: inline-block;
+    font-size: 14px;
+    line-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &::before{
+        display : inline-block;
+        width:16px;
+        height:16px;
+        margin : 3px 3px 0 0;
+        vertical-align: top;
+
+        @media screen and (min-width : 1100px){
+            margin-top: 8px;
+        }
+        ${(props) => props.etc === "img" ? { img } : props.etc === "link" ? { link } : none}
+    }
+`
+
+export const NormalInfoWrap = styled(WrapInfo)`
+    display: inline-block;
+    position: absolute;
+    top: calc(50% + 2px);
+    right: 0;
+    transform: translateY(-50%);
+    margin-top: 0;
+
+    @media screen and (min-width : 1100px){
+        margin-top: -1px;
+    }
+    ${StyledLink}{
+        @media screen and (min-width : 1100px){
+            margin-right: 0;
+        }
+    }
+`
+export const FuncLink = styled(StyledLink)`
+    display: inline-block;
+    width: 48px;
+    white-space: nowrap;
+
+    @media screen and (min-width : 1100px){
+        margin: 0 0 0 11px;
+    }
+
+    &::before{
+        background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+        background-size: 600px 900px;
+        background-position: ${props => props.func === "like" ? '-62px -600px' : props.func === "cmt" ? '-36px -600px' : '-10px -600px'}
+    }
+`
+
+
+export const BestInfoWrap = styled(NormalInfoWrap)`
+    display: block;
+    margin-left: 0;
+    position: relative;
+    top: auto;
+    transform: translateY(0);
+    margin-top: 8px;
+
+    @media screen and (min-width : 1100px){
+        position: absolute;
+        display: inline-block;
+    }
+    ${StyledLink}{
+        @media screen and (min-width : 1100px){
+            font-size: 12px;
+            margin-right: 0;
+        }
+    }
+`
+export const HideI = styled.i`
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
+    line-height: 100px;
+    white-space: nowrap;
 `
