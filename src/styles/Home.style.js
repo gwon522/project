@@ -280,3 +280,14 @@ export const HideI = styled.i`
     line-height: 100px;
     white-space: nowrap;
 `
+export const styleds = {
+    faIcon: {
+        position: 'absolute',
+        top: '50%',
+        left: '0',
+        transform: 'translateY(-50%)',
+        display: 'inline-block',
+        width: '32px',
+        height: '32px'
+    }
+}
