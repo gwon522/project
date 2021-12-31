@@ -69,23 +69,28 @@ export const TopicData = [
         data: [
             {
                 title: '테스트 데이터1',
-                view: 535
+                view: 535,
+                seq: 0
             },
             {
                 title: '테스트 데이터2',
-                view: 543
+                view: 543,
+                seq: 1
             },
             {
                 title: '테스트 데이터3',
-                view: 579
+                view: 579,
+                seq: 2
             },
             {
                 title: '테스트 데이터4',
-                view: 616
+                view: 616,
+                seq: 3
             },
             {
                 title: '테스트 데이터5',
-                view: 167
+                view: 167,
+                seq: 4
             }
         ]
     },
@@ -94,23 +99,28 @@ export const TopicData = [
         data: [
             {
                 title: '테스트 데이터1',
-                view: 535
+                view: 535,
+                seq: 0
             },
             {
                 title: '테스트 데이터2',
-                view: 543
+                view: 543,
+                seq: 1
             },
             {
                 title: '테스트 데이터3',
-                view: 579
+                view: 579,
+                seq: 2
             },
             {
                 title: '테스트 데이터4',
-                view: 616
+                view: 616,
+                seq: 3
             },
             {
                 title: '테스트 데이터5',
-                view: 167
+                view: 167,
+                seq: 4
             }
         ]
     },
@@ -119,23 +129,28 @@ export const TopicData = [
         data: [
             {
                 title: '테스트 데이터1',
-                view: 535
+                view: 535,
+                seq: 0
             },
             {
                 title: '테스트 데이터2',
-                view: 543
+                view: 543,
+                seq: 1
             },
             {
                 title: '테스트 데이터3',
-                view: 579
+                view: 579,
+                seq: 2
             },
             {
                 title: '테스트 데이터4',
-                view: 616
+                view: 616,
+                seq: 3
             },
             {
                 title: '테스트 데이터5',
-                view: 167
+                view: 167,
+                seq: 4
             }
         ]
     },
@@ -163,7 +178,7 @@ export const TopicData = [
                 view: 167
             }
         ]
-    }
+    },
 ];
 
 export const RankData = [
