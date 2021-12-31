@@ -1,5 +1,68 @@
 import React from 'react'
 
+export const BestData = [
+    {
+        category: '암호화폐',
+        title: '테스트 데이터1',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '반려동물',
+        title: '테스트 데이터2',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '육아',
+        title: '테스트 데이터3',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '블라블라',
+        title: '테스트 데이터4',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '게임',
+        title: '테스트 데이터5',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '게임',
+        title: '테스트 데이터6',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '게임',
+        title: '테스트 데이터7',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '게임',
+        title: '테스트 데이터8',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '게임',
+        title: '테스트 데이터9',
+        like: 535,
+        cmt: 200
+    },
+    {
+        category: '헬스',
+        title: '테스트 데이터10',
+        like: 535,
+        cmt: 200
+    }
+];
+
 export const TopicData = [
     {
         name: '블라블라',
@@ -101,7 +164,7 @@ export const TopicData = [
             }
         ]
     }
-]
+];
 
 export const RankData = [
     {
