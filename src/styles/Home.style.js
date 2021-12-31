@@ -71,7 +71,7 @@ export const TopicList = styled.div`
         }
     }
 `
-export const TopicLink = styled(Link)`
+export const DetailLink = styled(Link)`
     text-decoration: none;
     display: block;
     padding:14px 0;
@@ -124,7 +124,6 @@ export const Article = styled.div`
     font-size: 14px;
     word-wrap: break-word;
     line-height: 1.25em;
-    margin: 0;
     position: relative;
     padding: 12px 0;
     border-bottom:1px solid #f5f5f5;
@@ -138,7 +137,17 @@ export const Article = styled.div`
         }
     }
 `
-
+export const TopicLink = styled(StyledLink)`
+    display: inline-block;
+    max-width: calc(100% - 55px);
+    line-height: 20px;
+    vertical-align: middle;
+    @media screen and (min-width: 1100px){
+        display: inline-block;
+        font-size: 14px;
+        line-height: 30px;
+    }
+`
 export const ArticleBest = styled(Article)`
     padding: 11px 0;
 
@@ -226,18 +235,27 @@ export const NormalInfoWrap = styled(WrapInfo)`
 
     @media screen and (min-width : 1100px){
         margin-top: -1px;
-    }
-    ${StyledLink}{
-        @media screen and (min-width : 1100px){
-            margin-right: 0;
+        &:first-of-type{
+                margin-top: 3px;
         }
     }
+    /* ${StyledLink}{
+        &:only-of-type{
+            margin: 0;
+        }
+        @media screen and (min-width : 1100px){
+            margin-right: 0 0 0 11px;
+        }
+    } */
 `
 export const FuncLink = styled(StyledLink)`
     display: inline-block;
     width: 48px;
     white-space: nowrap;
-
+    vertical-align: top;
+    &:only-of-type{
+            margin: 0;
+    }
     @media screen and (min-width : 1100px){
         margin: 0 0 0 11px;
     }

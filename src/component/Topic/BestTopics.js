@@ -1,4 +1,4 @@
-import { BestTopic, Title, ArticleBest, ArticleBestTag, ArticleTitle, BestInfoWrap, FuncLink, TopicLink, styleds } from 'styles/Home.style';
+import { BestTopic, Title, ArticleBest, ArticleBestTag, ArticleTitle, BestInfoWrap, FuncLink, TopicLink, styleds, DetailLink } from 'styles/Home.style';
 import { FaCrown } from 'react-icons/fa';
 import { StyledLink } from 'styles/Global.style';
 import { HideI } from '../../styles/Home.style';
@@ -10,7 +10,7 @@ export const BestTopics = (props) => {
         <BestTopic>
             <Title><FaCrown style={styleds.faIcon} />토픽 베스트</Title>
             {TempTopicData.map((data, index) =>
-                <ArticleBest>
+                <ArticleBest key={index}>
                     <ArticleBestTag><StyledLink to="/topic/토픽베스트">{data.category}</StyledLink></ArticleBestTag>
                     <ArticleTitle to="/post/제목" etc="link">
                         {data.title}
@@ -22,7 +22,7 @@ export const BestTopics = (props) => {
                 </ArticleBest>
             )}
 
-            <TopicLink to="/topic/best">더보기</TopicLink>
+            <DetailLink to="/topic/best">더보기</DetailLink>
         </BestTopic>
     )
 }
