@@ -8,7 +8,8 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    height:${footerHeight}
+    height:${footerHeight};
+    margin-top:40px;
 `;
 const Name = styled.p`
     margin-right: 1.2rem;
