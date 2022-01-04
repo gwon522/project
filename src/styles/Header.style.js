@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { css } from "styled-components";
+import { StyledLink } from "./Global.style";
+
 
 const Header = styled.div`
     display: block;
@@ -175,8 +177,104 @@ export const Item = styled.div`
         margin-right: 30px;
     }
 `;
-export const Wrap = styled.div`
-    display:flex;
+
+export const HeaderFunc = styled.div`
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 100;
+    padding-left: 28px;
+
+    @media screen and (min-width: 1100px){
+        top: 21px;
+        right: 20px;
+        padding-left: 0;
+    }
+
+`;
+
+export const Explain = styled(StyledLink)`
+    margin: 0;
+    padding:0;
+    display: none;
+
+    @media screen and (min-width: 1100px){
+        display: inline-block;
+        margin: 9px 3px 0 0;
+        padding: 4px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+        vertical-align: top;
+
+        &:before, &:after{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-top: -1px;
+            margin-bottom: 1px;
+            vertical-align: middle;
+            content: "";
+        }
+        &:before{
+            margin-right: 6px;
+            background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+            background-size: 600px 900px;
+            background-position: -218px -652px;
+        }
+        &:after{
+            margin-left: -3px;
+            background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+            background-size: 600px 900px;
+            background-position: -166px -626px;
+
+        }
+    }   
+
+`
+
+export const Function = styled(HeaderFunc)`
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 100;
+    padding-left: 28px;
+
+    @media screen and (min-width: 1100px){
+        top: 21px;
+        right: 20px;
+        padding-left: 0;
+    }    
+`;
+export const ActionWrap = styled.div`
+    display: inline-block;
+    font-size: 0;
+    vertical-align: top;
+`
+export const ActionLink = styled(StyledLink)`
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-left: 8px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    box-sizing: border-box;
+    vertical-align: top;
+    background-color: ${(props) => props.name === 'write' ? "#da3238" : "#fff"};
+    border-color: ${(props) => props.name === 'write' ? "#da3238" : "#d4d4d4"};
+    color: ${(props) => props.name === 'write' ? "#fff" : "#222"};
+
+    @media screen and (min-width:1100px){
+        width: 82px;
+        height: 40px;
+        margin-left: 10px;
+        font-size: 14px;
+        line-height: 38px;
+    }
 `
 export const SearchBox = styled.input`
     font-size: 0.925rem;
@@ -194,26 +292,4 @@ export const SearchWrap = styled.section`
     margin: 1.5rem 0;
     justify-content: center;
     align-items: center;
-`
-export const ActionWrap = styled.div`
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-`
-export const ItemButton = styled.button`
-    border:none;
-    font-weight: bold;
-    font-size:0.825rem;
-    cursor:pointer;
-    padding:0.5rem 0.825rem;
-    margin-right: 10px;
-    
-    ${(props) =>
-        props.bgColor === 'white' && css`
-        border: 1px solid #d4d4d4;
-    `}
-    
-    color : ${(props) => props.color};
-    background-color: ${(props) => props.bgColor};
 `

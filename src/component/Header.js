@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Logo, Item, Nav, ItemButton, ActionWrap, Wrap, ItemList, HeaerWrapper, NavMask, NavTab } from "../styles/Header.style";
-import { Search } from './Search';
+import { StyledLink } from 'styles/Global.style';
+import { Container, Logo, Item, Nav, ItemList, HeaerWrapper, NavMask, NavTab, Function, Explain, ActionWrap, ActionLink } from "../styles/Header.style";
 
 export const Header = (props) => {
     return (
@@ -16,21 +16,22 @@ export const Header = (props) => {
                         <NavTab>
                             <ItemList>
                                 <Item>
-                                    <Link to="/">홈</Link>
+                                    <StyledLink to="/">홈</StyledLink>
                                 </Item>
                                 <Item>
-                                    <Link to="/review">리뷰</Link>
+                                    <StyledLink to="/review">리뷰</StyledLink>
                                 </Item>
                             </ItemList>
                         </NavTab>
                     </NavMask>
                 </Nav>
-                {/* <Wrap>
+                <Function>
+                    <Explain><span>테스트용데이터</span></Explain>
                     <ActionWrap>
-                        <ItemButton bgColor={'#da3238'} color={'white'} onClick={() => { alert('글쓰기') }}>글쓰기</ItemButton>
-                        <ItemButton bgColor={'white'} color={'black'} onClick={() => { alert('로그인') }}> 로그인</ItemButton>
+                        <ActionLink name="write">글쓰기</ActionLink>
+                        <ActionLink name="login">로그인</ActionLink>
                     </ActionWrap>
-                </Wrap> */}
+                </Function>
             </HeaerWrapper>
         </Container >
     );
