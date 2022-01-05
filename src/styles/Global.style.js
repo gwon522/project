@@ -41,7 +41,7 @@ export const WrapInfo = styled.div`
         color:#94969b;
         vertical-align: top;
 
-        &::before{
+        &:before{
             display: inline-block;
             width: 16px;
             height: 16px;

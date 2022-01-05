@@ -28,8 +28,8 @@ export const Header = (props) => {
                 <Function>
                     <Explain><span>테스트용데이터</span></Explain>
                     <ActionWrap>
-                        <ActionLink name="write">글쓰기</ActionLink>
-                        <ActionLink name="login">로그인</ActionLink>
+                        <ActionLink name="write" to="/write">글쓰기</ActionLink>
+                        <ActionLink name="login" to="/login">로그인</ActionLink>
                     </ActionWrap>
                 </Function>
             </HeaerWrapper>

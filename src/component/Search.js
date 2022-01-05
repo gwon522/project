@@ -32,9 +32,7 @@ export const Search = () => {
                 onKeyPress={onKeyPressHandler}
                 onChange={onChangeHandler}
             />
-            <Button onClick={onClickHandler}>
-                <FiSearch size="15" cursor="pointer" />
-            </Button>
+            <Button onClick={onClickHandler} />
         </SearchSection>
     )
 };

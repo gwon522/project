@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { css } from "styled-components";
 import { StyledLink } from "./Global.style";
+import { Link } from 'react-router-dom';
 
 
 const Header = styled.div`
@@ -15,7 +16,6 @@ const Header = styled.div`
     }
     a{
         text-decoration: none;
-        color:#222;
     }
 `
 
@@ -250,8 +250,11 @@ export const ActionWrap = styled.div`
     display: inline-block;
     font-size: 0;
     vertical-align: top;
-`
-export const ActionLink = styled(StyledLink)`
+    `
+export const ActionLink = styled(Link)`
+    background-color: ${(props) => props.name === 'write' ? "#da3238" : "#fff"};
+    border-color: ${(props) => props.name === 'write' ? "#da3238" : "#d4d4d4"};
+    color: ${(props) => props.name === 'write' ? "#fff" : "#222"};
     display: inline-block;
     width: 60px;
     height: 30px;
@@ -264,9 +267,6 @@ export const ActionLink = styled(StyledLink)`
     text-align: center;
     box-sizing: border-box;
     vertical-align: top;
-    background-color: ${(props) => props.name === 'write' ? "#da3238" : "#fff"};
-    border-color: ${(props) => props.name === 'write' ? "#da3238" : "#d4d4d4"};
-    color: ${(props) => props.name === 'write' ? "#fff" : "#222"};
 
     @media screen and (min-width:1100px){
         width: 82px;
