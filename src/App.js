@@ -2,7 +2,7 @@
 import { Header, Footer } from 'component/index'
 import { Route, Switch } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
-import { Home, Login, NotFound, Signup } from './pages/index';
+import { Board, Home, Login, NotFound, Signup } from './pages/index';
 import { useState } from 'react';
 
 const App = () => {
@@ -23,9 +23,10 @@ const App = () => {
       <MainContainer>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Signup" component={Signup} />
-          {/* <Route path="/topic/:id" component={}/>  */}
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          {/* <Route path="/write" component={Write} /> */}
+          <Route path="/topic/:id" component={Board} />
           <Route path="*" component={NotFound}
             status={404} />
         </Switch>
