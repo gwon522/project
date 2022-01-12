@@ -6,24 +6,22 @@ import BoardTempData from "./BoardTempData";
 
 const BoardList = () => {
     const item = BoardTempData;
-    const ArticleWrap = styled.div`
-        width: 100%;
-        min-height: 800px;
-    `
+
     const ArticleList = styled.div`
         display: flex;
         flex-wrap: wrap;
         overflow: hidden;
-
+        @media screen and (min-width:1100px){
+            width: 100%;
+            min-height: 800px;
+        }
     `;
     return (
-        <ArticleWrap>
-            <ArticleList>
-                {item.map((item) => {
-                    return <BoardItem key={item.id} item={item} />
-                })}
-            </ArticleList>
-        </ArticleWrap>
+        <ArticleList>
+            {item.map((item) => {
+                return <BoardItem key={item.id} item={item} />
+            })}
+        </ArticleList>
     )
 }
 

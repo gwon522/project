@@ -24,6 +24,42 @@ const BoardTempData = [
         detail: '내용4',
         image: '이미지4',
         id: 4
+    },
+    {
+        title: '제목5',
+        detail: '내용5',
+        image: '이미지5',
+        id: 5
+    },
+    {
+        title: '제목6',
+        detail: '내용6',
+        image: '이미지6',
+        id: 6
+    },
+    {
+        title: '제목5',
+        detail: '내용5',
+        image: '이미지5',
+        id: 5
+    },
+    {
+        title: '제목6',
+        detail: '내용6',
+        image: '이미지6',
+        id: 6
+    },
+    {
+        title: '제목5',
+        detail: '내용5',
+        image: '이미지5',
+        id: 5
+    },
+    {
+        title: '제목6',
+        detail: '내용6',
+        image: '이미지6',
+        id: 6
     }
 ]
 
