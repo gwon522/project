@@ -65,7 +65,7 @@ const BoardItem = (props) => {
             
         }
     `
-    const P = styled.p` 
+    const Detail = styled.p` 
         margin: 0;
         padding:0;
         padding-right: 90px;
@@ -170,32 +170,96 @@ const BoardItem = (props) => {
         margin-top: 8px;
         font-size: 12px;
     `
+    const CommonLink = styled(StyledLink)`
+        margin-right: 14px;
+        color:#94969b;
+        vertical-align: top;
+        &:before{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin: -1px 3px 1px 0;
+            vertical-align: middle;
+            content: "";
+        }
+    `
+
+    const ViewLink = styled(CommonLink)`
+        &:before{
+            background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+            background-size: 600px 900px;
+            background-position: -10px -600px;
+        }
+    `
+    const LikeLink = styled(CommonLink)`
+        position: relative;
+        z-index: 1;
+        &:before{
+            background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+            background-size: 600px 900px;
+            background-position: -62px -600px;
+        }
+    `
+    const CommentLink = styled(CommonLink)`
+        &:before{
+            background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+            background-size: 600px 900px;
+            background-position: -36px -600px;
+        }
+    `
+
+    const InfoWrap = styled.div`
+        position: absolute;
+        margin:0;
+        padding:0;
+        top: 0;
+        right: 0;
+        font-size: 14px;
+    `
+    const TimeLink = styled(CommonLink)`
+        font-size: 12px;
+        margin: 0 2px 0 0;
+    `
+    const ScrapeLink = styled(CommonLink)`
+        margin: 1px 0 0;
+        /* display: inline-block; */
+        width: 20px;
+        height: 20px;
+        padding: 2px;
+        box-sizing: border-box;
+        &:before{
+            background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+            background-size: 600px 900px;
+            background-position: -88px -652px;
+            vertical-align: top;
+        }
+    `
     return (
         <ArticleListPreView>
             <TitleWrap image={image ? true : false}>
-                <Title image={image ? true : false}><BoardLink to={`/topic/board/${id}`}>{title}</BoardLink></Title>
-                <P>
-                    <ContentLink>{detail}</ContentLink>
-                </P>
+                <Title image={image ? true : false}><BoardLink to={`/post/${id}`}>{title}</BoardLink></Title>
+                <Detail>
+                    <ContentLink to={`/post/${id}`}>{detail}</ContentLink>
+                </Detail>
                 <ImageWrap>
-                    <ImageLink>
-                        <Image to={`board/${id}`} />
-                        <em>{image}</em>
+                    <ImageLink to={`/post/${id}`}>
+                        <Image to={`/post/${id}`} />
+                        <em>+1</em>
                     </ImageLink>
                 </ImageWrap>
             </TitleWrap>
             <SubWrap>
                 <CompanyName>
-                    <StyledLink>직장</StyledLink>
+                    <StyledLink to={`/post/${id}`}>직장</StyledLink>
                 </CompanyName>
                 <WrapInfo>
-                    <a>조회</a>
-                    <a>좋아요</a>
-                    <a>댓글</a>
-                    <div>
-                        <a>시간</a>
-                        <a>스크랩</a>
-                    </div>
+                    <ViewLink to={`/post/${id}`}>22</ViewLink>
+                    <LikeLink to={`/post/${id}`}>22</LikeLink>
+                    <CommentLink to={`/post/${id}`}>22</CommentLink>
+                    <InfoWrap>
+                        <TimeLink>40분</TimeLink>
+                        <ScrapeLink />
+                    </InfoWrap>
                 </WrapInfo>
             </SubWrap>
         </ArticleListPreView >
