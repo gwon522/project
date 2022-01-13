@@ -1,3 +1,4 @@
+import BoardCarousel from "component/board/BoardCarousel";
 import BoardList from "component/board/BoardList";
 import styled from "styled-components";
 
@@ -19,6 +20,7 @@ const Board = () => {
     `
     return (
         <BoardWrap>
+            <BoardCarousel />
             <BoardList />
         </BoardWrap>
     )
