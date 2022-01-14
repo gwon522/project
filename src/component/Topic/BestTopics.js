@@ -1,4 +1,4 @@
-import { BestTopic, Title, ArticleBest, ArticleBestTag, ArticleTitle, BestInfoWrap, FuncLink, TopicLink, styleds, DetailLink } from 'styles/Home.style';
+import { BestTopic, Title, ArticleBest, ArticleBestTag, ArticleTitle, BestInfoWrap, FuncLink, styleds, DetailLink } from 'styles/Home.style';
 import { FaCrown } from 'react-icons/fa';
 import { StyledLink } from 'styles/Global.style';
 import { HideI } from '../../styles/Home.style';

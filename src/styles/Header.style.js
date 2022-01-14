@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { css } from "styled-components";
 import { StyledLink } from "./Global.style";
 import { Link } from 'react-router-dom';
 

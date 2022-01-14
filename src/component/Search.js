@@ -1,4 +1,3 @@
-import { FiSearch } from 'react-icons/fi'
 import React, { useState } from 'react';
 import { Button, SearchInput, SearchSection } from 'styles/Search.style';
 

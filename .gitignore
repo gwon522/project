@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 package-lock.json
+ownProject.code-workspace
+src/component/board/ownProject.code-workspace

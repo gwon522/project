@@ -1,13 +1,10 @@
 
 import { Topic, Title, Article, NormalInfoWrap, FuncLink, TopicLink, styleds, DetailLink } from 'styles/Home.style';
 import { FaCrown } from 'react-icons/fa';
-import { StyledLink } from 'styles/Global.style';
 import { HideI } from '../../styles/Home.style';
-import styled from 'styled-components';
 
 export const Topics = (props) => {
     const topicName = props.name;
-    const topicIcon = props.icon;
     const topicList = props.data;
 
 
