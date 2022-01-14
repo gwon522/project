@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from "react-slick";
 import styled from 'styled-components';
+import { StyledLink } from 'styles/Global.style';
+import { CarouselData } from 'utils/TempData';
 
 const CarouselWrap = styled.div`
     display:none;
@@ -24,36 +26,59 @@ const CarouselWrap = styled.div`
         }
     }
 `
+const StyledSlider = styled(Slider)`
+    width:100%;
 
-const BoardCarousel = () => {
+    .slick-list{
+        width:100%;
+        height: 100%;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .slick-slide div{
+        cursor:pointer;
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+
+        @media screen and (min-width:1100px){
+            display: inline-block;
+            position: relative;
+            width: auto!important;
+            height: 31px;
+            margin: 0 12px;
+            border-bottom: 2px solid transparent;
+            font-size: 14px;
+
+        }
+    }
+`
+const CarouselLink = styled(StyledLink)`
+    @media screen and (min-width:1100px){
+        font-weight:700;
+        color:#222;
+    }
+`
+
+const BoardCarousel = (props) => {
+    const list = CarouselData;
     const settings = {
         dots: false,
         infinite: true,
-        speed: 1000,
-        arrows:false,
+        speed: 500,
         slidesToShow: 10,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        focusOnSelect: true
     };
 
     return (
         <CarouselWrap>
-            <Slider {...settings} style={{width:'100%'}}>
-                <div>데이터1</div>
-                <div>데이터2</div>
-                <div>데이터3</div>
-                <div>데이터4</div>
-                <div>데이터5</div>
-                <div>데이터6</div>
-                <div>데이터7</div>
-                <div>데이터8</div>
-                <div>데이터9</div>
-                <div>데이터10</div>
-                <div>데이터11</div>
-                <div>데이터12</div>
-                <div>데이터13</div>
-                <div>데이터14</div>
-                <div>데이터15</div>
-            </Slider>
+            <StyledSlider {...settings} style={{ width: '100%' }}>
+                {list.map((item, index) => <div clickGoTo={index}><CarouselLink to={item.link}>{item.name}</CarouselLink></div>)}
+            </StyledSlider>
         </CarouselWrap>
     )
 }
