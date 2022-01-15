@@ -2,8 +2,9 @@
 import { Header, Footer } from 'component/index'
 import { Route, Switch } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
-import { Board, Home, Login, NotFound, Signup } from './pages/index';
+import { Board, Home, Login, NotFound, Signup, BoardDetail } from './pages/index';
 import { useState } from 'react';
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,8 +28,8 @@ const App = () => {
           <Route path="/signup" component={Signup} />
           {/* <Route path="/write" component={Write} /> */}
           <Route path="/topic/:id" component={Board} />
-          <Route path="*" component={NotFound}
-            status={404} />
+          <Route path="/post/:id" component={BoardDetail} />
+          <Route path="*" component={NotFound} status={404} />
         </Switch>
       </MainContainer>
       <Footer />

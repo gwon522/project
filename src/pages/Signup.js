@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, LoginWrapper, Input } from 'styles/Login.style';
 
-const SignupComponent = () => {
+const SignupPage = () => {
     return (
         <LoginWrapper>
             <text>회원가입</text>
@@ -12,4 +12,4 @@ const SignupComponent = () => {
     );
 }
 
-export default SignupComponent;
+export default SignupPage;

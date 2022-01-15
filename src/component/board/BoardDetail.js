@@ -1,5 +1,5 @@
 
-const BoardDetail =()=>{
+const BoardDetail = () => {
 
     return (
         <div>

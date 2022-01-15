@@ -1,6 +1,11 @@
 
-const BoardDetail=()=>{
+import React from 'react';
+import BoardDetail from '../component/board/BoardDetail';
 
+const BoardDetailPage = () => {
+    return (
+        <BoardDetail />
+    )
 }
 
-export default BoardDetail
+export default BoardDetailPage

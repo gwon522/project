@@ -62,6 +62,22 @@ const CarouselLink = styled(StyledLink)`
         color:#222;
     }
 `
+const SortWrap = styled.div`
+    
+    @media screen and (min-width:1100px){
+        position: relative;
+        width: 132px;
+        &:before{
+            position: absolute;
+            top: 4px;
+            left: 0;
+            width: 1px;
+            height: 12px;
+            background: #ccc;
+            content: "";
+        }
+    }
+`
 
 const BoardCarousel = (props) => {
     const list = CarouselData;
@@ -71,14 +87,18 @@ const BoardCarousel = (props) => {
         speed: 500,
         slidesToShow: 10,
         slidesToScroll: 1,
-        focusOnSelect: true
+        focusOnSelect: true,
+        arrows: false
     };
 
     return (
         <CarouselWrap>
-            <StyledSlider {...settings} style={{ width: '100%' }}>
-                {list.map((item, index) => <div clickGoTo={index}><CarouselLink to={item.link}>{item.name}</CarouselLink></div>)}
+            <StyledSlider {...settings} style={{ width: '90%' }}>
+                {list.map(item => <div ><CarouselLink to={item.link}>{item.name}</CarouselLink></div>)}
             </StyledSlider>
+            <SortWrap>
+                <span><a>ddd</a></span>
+            </SortWrap>
         </CarouselWrap>
     )
 }
