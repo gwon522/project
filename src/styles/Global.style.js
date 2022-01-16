@@ -29,13 +29,14 @@ export const StyledLink = styled(Link)`
 `
 export const WrapInfo = styled.div`
     position: relative;
-    margin-top: 8px;
+    margin-top: ${props => props.func ? '16px' : '8px'};
     font-size: 12px;
 
     @media screen and (min-width : 1100px){
         margin-top: 15px;
+        width:${props => props.func && "100%"};
+        font-size:${props => props.func && "14px"};
     }
-
     ${StyledLink}{
         margin-right: 14px;
         color:#94969b;
@@ -51,7 +52,18 @@ export const WrapInfo = styled.div`
         }
     }
 `
+export const InfoFnc = styled.div`
+position: absolute;
+margin:0;
+padding:0;
+top: ${props => props.func && '-2px'}0;
+right: 0;
+font-size: 14px;
 
+    @media screen and (min-width:1100px){
+        top:${props => props.func && '0'};
+    }
+`
 export const Layout = styled.div`
     display : flex;
     flex-direction : column;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { StyledLink } from 'styles/Global.style';
+import { InfoFnc, StyledLink, WrapInfo } from 'styles/Global.style';
 
 const BoardItem = (props) => {
     const title = props.item.title;
@@ -164,11 +164,7 @@ const BoardItem = (props) => {
             box-sizing: border-box;
         }
     `
-    const WrapInfo = styled.div`
-        position: relative;
-        margin-top: 8px;
-        font-size: 12px;
-    `
+
     const CommonLink = styled(StyledLink)`
         margin-right: 14px;
         color:#94969b;
@@ -207,14 +203,6 @@ const BoardItem = (props) => {
         }
     `
 
-    const InfoWrap = styled.div`
-        position: absolute;
-        margin:0;
-        padding:0;
-        top: 0;
-        right: 0;
-        font-size: 14px;
-    `
     const TimeLink = styled(CommonLink)`
         font-size: 12px;
         margin: 0 2px 0 0;
@@ -255,10 +243,10 @@ const BoardItem = (props) => {
                     <ViewLink to={`/post/${id}`}>22</ViewLink>
                     <LikeLink to={`/post/${id}`}>22</LikeLink>
                     <CommentLink to={`/post/${id}`}>22</CommentLink>
-                    <InfoWrap>
+                    <InfoFnc>
                         <TimeLink>40분</TimeLink>
                         <ScrapeLink />
-                    </InfoWrap>
+                    </InfoFnc>
                 </WrapInfo>
             </SubWrap>
         </ArticleListPreView >
