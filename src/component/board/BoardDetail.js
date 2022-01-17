@@ -104,10 +104,143 @@ const FuncSpan = styled.span`
             return '-88px -600px'
         } else if (props.func === "view") {
             return '-10px -600px'
-        } else {
+        } else if (props.func === "cmt") {
             return '-36px -600px'
+        } else {
+            return '-114px -652px'
         }
-    }}
+    }} 
+    }
+`
+const ArticleBody = styled.div`
+    padding: 0 20px;
+    border-top: 1px solid #eee;
+    word-wrap: break-word;
+    word-break: break-word;
+
+    @media screen and (min-width:1100px){
+        padding: 0;
+    }
+`
+const Article = styled.p`
+    margin:0;
+    margin-top: 24px;
+    line-height: 1.6em;
+    font-size: 15px;
+
+    @media screen and (min-width:1100px){
+        margin-top: 30px;
+        line-height: 1.75em;
+        font-size: 16px;
+    }
+`
+const ArticleInfo = styled.div`
+    position: relative;
+    margin-top: 30px;
+    padding: 26px 0;
+    border-top: 1px solid #eee;
+
+    @media screen and (min-width:1100px){
+        margin-top: 43px;
+        padding: 0;
+        border-top: 0;   
+    }
+`
+const LikeLink = styled(StyledLink)`
+    position: relative;
+    margin-right: 17px;
+    padding-left: 24px;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: top;
+
+    &:before{
+        background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+        background-size: 504px 756px;
+        background-position: -109.2px -406.56px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-top: -9px;
+        content: "";
+        
+        @media screen and (min-width:1100px){
+            background-size: 600px 900px;
+            background-position: -130px -484px;
+            width: 20px;
+            height: 20px;
+            margin-top: -11px;
+            content: "";
+        }
+    }
+
+    @media screen and (min-width:1100px){
+        margin-right: 14px;
+        padding-left: 24px;
+        font-size: 16px;
+    }
+`
+
+const CommentLink = styled(StyledLink)`
+    position: relative;
+    margin-right: 17px;
+    padding-left: 24px;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: top;
+
+    &:before{
+        background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+        background-size: 504px 756px;
+        background-position: -58.8px -406.56px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-top: -9px;
+        content: "";
+        
+        @media screen and (min-width:1100px){
+            background-size: 600px 900px;
+            background-position: -70px -484px;
+            width: 20px;
+            height: 20px;
+            margin-top: -11px;
+            content: "";
+        }
+    }
+
+    @media screen and (min-width:1100px){
+        margin-right: 14px;
+        padding-left: 24px;
+        font-size: 16px;
+    }
+`
+const ArticleComment = styled.div`
+    margin: 0 0 -1px;
+    padding: 23px 0 24px;
+    border-top: 1px solid #eee;
+
+    @media screen and (min-width:1100px){
+        margin-top: 40px;
+        padding: 26px 0 0;
+    }
+
+    h3{
+        margin:0;
+        padding: 0 20px;
+        font-size: 14px;
+        font-weight: 700;
+
+        @media screen and (min-width:1100px){
+            padding: 0;
+            font-size: 16px;
+        }
     }
 `
 const BoardDetail = () => {
@@ -131,10 +264,23 @@ const BoardDetail = () => {
                         <FuncSpan func="view">뷰</FuncSpan>
                         <FuncSpan func="cmt">코멘트</FuncSpan>
                         <InfoFnc func="detail">
-                            dd
+                            <FuncSpan func="bookMark" />
                         </InfoFnc>
                     </WrapInfo>
                 </ArticleHead>
+                <ArticleBody>
+                    <Article>글을 여기다 작성</Article>
+                    <ArticleInfo>
+                        <LikeLink>좋아요</LikeLink>
+                        <CommentLink>코멘트</CommentLink>
+                    </ArticleInfo>
+                </ArticleBody>
+                <ArticleComment>
+                    <h3>댓글 cnt</h3>
+                    <div>
+                        <div></div>
+                    </div>
+                </ArticleComment>
             </Contents>
             <Aside />
         </BoardDetailWrap>
