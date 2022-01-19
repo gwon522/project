@@ -1,10 +1,15 @@
 
 import React from 'react';
 import BoardDetail from '../component/board/BoardDetail';
+import { BoardDetailWrap } from 'styles/BoardDetail.style';
+import { Aside } from "component/index";
 
 const BoardDetailPage = () => {
     return (
-        <BoardDetail />
+        <BoardDetailWrap>
+            <BoardDetail />
+            <Aside />
+        </BoardDetailWrap>
     )
 }
 
