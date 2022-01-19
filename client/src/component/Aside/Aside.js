@@ -1,8 +1,8 @@
 import { AsideWrap } from "styles/Aside.style";
 import { RankData } from "utils/TempData";
-import { Banner } from "./Aside/Banner";
-import { Chart } from "./Aside/Chart";
-import { ChartItem } from "./Aside/ChartItem";
+import { Banner } from "./Banner";
+import { Chart } from "./Chart";
+import { ChartItem } from "./ChartItem";
 
 export const Aside = () => {
 

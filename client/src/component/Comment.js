@@ -31,7 +31,7 @@ export const Comment = () => {
     return (
         <CommentWrap>
             <Name>
-                <StyledLink style={NameColor}>직장명</StyledLink> · 블라인드처리
+                <StyledLink style={NameColor} to="/">직장명</StyledLink> · 블라인드처리
             </Name>
             <CommentText>글내용</CommentText>
             <WrapInfo>

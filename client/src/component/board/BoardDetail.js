@@ -18,7 +18,7 @@ const BoardDetail = () => {
                     제목부분
                 </h2>
                 <Name>
-                    <StyledLink style={NameColor}>직장명</StyledLink> 부서명
+                    <StyledLink style={NameColor} to="/">직장명</StyledLink> 부서명
                 </Name>
                 <WrapInfo func="detail">
                     <FuncSpan func="time">시간</FuncSpan>
@@ -32,8 +32,8 @@ const BoardDetail = () => {
             <ArticleBody>
                 <Article>글을 여기다 작성</Article>
                 <ArticleInfo>
-                    <LikeLink>좋아요</LikeLink>
-                    <CommentLink>코멘트</CommentLink>
+                    <LikeLink to="/">좋아요</LikeLink>
+                    <CommentLink to="/">코멘트</CommentLink>
                 </ArticleInfo>
             </ArticleBody>
             <ArticleComment>

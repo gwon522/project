@@ -19,7 +19,7 @@ const BoardItem = (props) => {
                 </Detail>
                 <ImageWrap>
                     <ImageLink to={`/post/${id}`}>
-                        <Image to={`/post/${id}`} />
+                        <Image />
                         <em>+1</em>
                     </ImageLink>
                 </ImageWrap>
@@ -33,8 +33,8 @@ const BoardItem = (props) => {
                     <LikeLink to={`/post/${id}`}>22</LikeLink>
                     <CommentLink to={`/post/${id}`}>22</CommentLink>
                     <InfoFnc>
-                        <TimeLink>40분</TimeLink>
-                        <ScrapeLink />
+                        <TimeLink to="/">40분</TimeLink>
+                        <ScrapeLink to="/" />
                     </InfoFnc>
                 </WrapInfo>
             </SubWrap>

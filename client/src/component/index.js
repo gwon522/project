@@ -1,6 +1,6 @@
 import { Footer } from './Footer'
 import { Header } from './Header'
-import { Aside } from './Aside';
+import { Aside } from './Aside/Aside';
 import { Search } from './Search';
 
 
