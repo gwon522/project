@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledLink } from './Global.style';
+import { StyledLink } from 'styles/Global.style';
 
 export const BoardDetailWrap = styled.div`
     display: flex;
@@ -239,5 +239,60 @@ export const ArticleComment = styled.div`
             padding: 0;
             font-size: 16px;
         }
+    }
+`
+
+export const ReplyArea = styled.div`
+    position: relative;
+    margin-top: 19px;
+    padding: 0 20px;
+
+    @media screen and (min-width:1100px){
+        border: 1px solid #d4d4d4;
+        margin-top: 21px;
+        padding: 0;
+    }
+`
+export const ReplyButton = styled.button`
+    position: relative;
+    width: 100%;
+    height: 54px;
+    padding-left: 48px;
+    border: 1px solid #d4d4d4;
+    font-size: 14px;
+    text-align: left;
+    box-sizing: border-box;
+    overflow: visible;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    
+    &:before{
+        position: absolute;
+        top: 50%;
+        left: 17px;
+        transform: translateY(-50%);
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
+        background-size: 504px 756px;
+        background-position: -8.4px -322.56px;
+        content: "";
+
+        @media screen and (min-width:1100px){
+            left: 23px;
+            width: 24px;
+            height: 24px;
+            background-size: 600px 900px;
+            background-position: -10px -384px;
+        }
+    }
+
+    @media screen and (min-width:1100px){
+        height: 63px;
+        padding-left: 60px;
+        border: 0;
+        font-size: 16px;
     }
 `

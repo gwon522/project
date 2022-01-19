@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const NameColor = { color: "#37acc9" };
+
 export const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
