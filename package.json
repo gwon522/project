@@ -1,0 +1,25 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "client and server",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "nodemon ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gwon522/project.git"
+  },
+  "author": "gwon522",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gwon522/project/issues"
+  },
+  "homepage": "https://github.com/gwon522/project#readme",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.17.2",
+    "nodemon": "2.0.15"
+  }
+}
