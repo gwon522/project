@@ -1,8 +1,8 @@
 
-import { Comment } from "component/Comment";
+import { Comment } from "component/index";
 import { ReplyArea, ReplyButton } from "styles/board/BoardDetail.style";
-import { Article, ArticleBody, ArticleComment, ArticleHead, ArticleInfo, CommentLink, Contents, FuncSpan, LikeLink, Name, TopicLink } from "styles/board/BoardDetail.style";
-import { InfoFnc, NameColor, StyledLink, WrapInfo } from "styles/Global.style";
+import { Article, ArticleBody, ArticleComment, ArticleHead, ArticleInfo, CommentLink, Contents, LikeLink, Name, TopicLink } from "styles/board/BoardDetail.style";
+import { FuncSpan, InfoFnc, NameColor, StyledLink, WrapInfo } from "styles/Global.style";
 
 
 const BoardDetail = () => {
@@ -18,7 +18,7 @@ const BoardDetail = () => {
                     제목부분
                 </h2>
                 <Name>
-                    <StyledLink style={NameColor} to="/">직장명</StyledLink> 부서명
+                    <StyledLink style={NameColor} to="/">직장명</StyledLink> · 아이디
                 </Name>
                 <WrapInfo func="detail">
                     <FuncSpan func="time">시간</FuncSpan>

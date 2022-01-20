@@ -83,33 +83,6 @@ export const Name = styled.p`
         font-size: 14px;
     }
 `
-export const FuncSpan = styled.span`
-    margin-right: 14px;
-    color:#94969b;
-    vertical-align: top;
-
-    &:before{
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        margin: -1px 3px 1px 0;
-        vertical-align: middle;
-        content: "";
-        background: url('https://d2u3dcdbebyaiu.cloudfront.net/img/www_kr/sp-kr.png') no-repeat;
-        background-size: 600px 900px;
-        background-position : ${props => {
-        if (props.func === "time") {
-            return '-88px -600px'
-        } else if (props.func === "view") {
-            return '-10px -600px'
-        } else if (props.func === "cmt") {
-            return '-36px -600px'
-        } else {
-            return '-114px -652px'
-        }
-    }} 
-    }
-`
 export const ArticleBody = styled.div`
     padding: 0 20px;
     border-top: 1px solid #eee;
