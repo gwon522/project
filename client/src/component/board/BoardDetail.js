@@ -1,12 +1,12 @@
 
 import { Comment } from "component/index";
+import { ReComment } from "component/ReComment";
 import { ReplyArea, ReplyButton } from "styles/board/BoardDetail.style";
 import { Article, ArticleBody, ArticleComment, ArticleHead, ArticleInfo, CommentLink, Contents, LikeLink, Name, TopicLink } from "styles/board/BoardDetail.style";
 import { FuncSpan, InfoFnc, NameColor, StyledLink, WrapInfo } from "styles/Global.style";
 
 
 const BoardDetail = () => {
-
     return (
         <Contents>
             <ArticleHead>
@@ -25,7 +25,7 @@ const BoardDetail = () => {
                     <FuncSpan func="view">뷰</FuncSpan>
                     <FuncSpan func="cmt">코멘트</FuncSpan>
                     <InfoFnc func="detail">
-                        <FuncSpan func="bookMark" />
+                        <FuncSpan func="bookmark" />
                     </InfoFnc>
                 </WrapInfo>
             </ArticleHead>
@@ -43,8 +43,10 @@ const BoardDetail = () => {
                         <ReplyButton>댓글을 남겨주세요.</ReplyButton>
                     </ReplyArea>
                     <Comment />
+                    <ReComment />
                 </div>
             </ArticleComment>
+
         </Contents>
     )
 

@@ -97,8 +97,10 @@ export const FuncSpan = styled.span`
             return '-10px -600px'
         } else if (props.func === "cmt") {
             return '-36px -600px'
-        } else {
+        } else if (props.func === "bookmark") {
             return '-114px -652px'
+        } else {
+            return '-166px -652px'
         }
     }} 
     }
