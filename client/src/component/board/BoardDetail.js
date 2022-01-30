@@ -1,12 +1,22 @@
 
+import axios from "axios";
 import { Comment } from "component/index";
 import { ReComment } from "component/ReComment";
+import { useEffect, useState } from "react";
 import { ReplyArea, ReplyButton } from "styles/board/BoardDetail.style";
 import { Article, ArticleBody, ArticleComment, ArticleHead, ArticleInfo, CommentLink, Contents, LikeLink, Name, TopicLink } from "styles/board/BoardDetail.style";
 import { FuncSpan, InfoFnc, NameColor, StyledLink, WrapInfo } from "styles/Global.style";
 
 
 const BoardDetail = () => {
+
+    const fetch = async () => {
+        axios.get('/api', { params: { data: '111' } }).then(res => console.log(res.data));
+    }
+    useEffect(() => {
+        fetch();
+    }, []);
+
     return (
         <Contents>
             <ArticleHead>
@@ -30,7 +40,7 @@ const BoardDetail = () => {
                 </WrapInfo>
             </ArticleHead>
             <ArticleBody>
-                <Article>글을 여기다 작성</Article>
+                <Article>글을 여기다 작성 </Article>
                 <ArticleInfo>
                     <LikeLink to="/">좋아요</LikeLink>
                     <CommentLink to="/">코멘트</CommentLink>

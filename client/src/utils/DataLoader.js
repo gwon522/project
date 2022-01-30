@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const settingAxios = axios.create({
-    baseURL: `localHost:3000`,
+    baseURL: `localHost:5050`,
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
