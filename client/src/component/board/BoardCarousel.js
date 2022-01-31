@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { CarouselLink, CarouselWrap, SortWrap, StyledSlider } from 'styles/board/BoardCarousel.style';
 import { CarouselData } from 'utils/TempData';
 
@@ -6,6 +7,10 @@ import { CarouselData } from 'utils/TempData';
 
 const BoardCarousel = (props) => {
     const list = CarouselData;
+    const { data, loading } = useSelector(state => console.log(state));
+
+
+
     const settings = {
         dots: false,
         infinite: true,
