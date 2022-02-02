@@ -1,5 +1,6 @@
-import { put, call } from 'redux-saga';
-import { startLoading, endLoading } from './store/modules/loading';
+import { put, call } from 'redux-saga/effects';
+import { startLoading, endLoading } from '../store/modules/loading';
+
 
 export default function createRequestSaga(actions, api) {
     return function* requestSaga({ payload }) {

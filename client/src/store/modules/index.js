@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import loading from './loading';
-import auth from './auth'
+import auth from './auth';
+import topic from './topic';
 
 
 
@@ -8,5 +9,5 @@ import auth from './auth'
 export const rootReducer = combineReducers({
     loading,
     auth,
-
+    topic
 });

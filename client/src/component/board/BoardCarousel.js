@@ -1,14 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { topicActions } from 'store/modules/topic';
 import { CarouselLink, CarouselWrap, SortWrap, StyledSlider } from 'styles/board/BoardCarousel.style';
 import { CarouselData } from 'utils/TempData';
 
 
 
-const BoardCarousel = (props) => {
-    const list = CarouselData;
-    const { data, loading } = useSelector(state => console.log(state));
 
+const BoardCarousel = (props) => {
+    const topicList = useSelector(state => state.topic.result);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        // if (data) return;
+        dispatch(topicActions.request());
+    }, [dispatch]);
 
 
     const settings = {
@@ -21,13 +26,15 @@ const BoardCarousel = (props) => {
         arrows: false
     };
 
+
     return (
         <CarouselWrap>
             <StyledSlider {...settings} style={{ width: '90%' }}>
-                {list.map(item => <div ><CarouselLink to={item.link}>{item.name}</CarouselLink></div>)}
+                {/* onClick={getPost(`/topic/${item.cd_name}`)} */}
+                {topicList.map(item => <div key={item.cd_id}><CarouselLink to={`/topic/${item.cd_name}`} >{item.cd_name}</CarouselLink></div>)}
             </StyledSlider>
             <SortWrap>
-                <span><a>ddd</a></span>
+                <span><a>설정값</a></span>
             </SortWrap>
         </CarouselWrap>
     )
