@@ -2,7 +2,7 @@
 import { Header, Footer } from 'component/index'
 import { Route, Switch } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
-import { Board, Home, Login, NotFound, Signup, BoardDetail } from './pages/index';
+import { Board, Home, Login, NotFound, Signup, BoardDetail, Write } from './pages/index';
 import { useState } from 'react';
 
 
@@ -26,7 +26,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          {/* <Route path="/write" component={Write} /> */}
+          <Route path="/write" component={Write} />
           <Route path="/topic/:id" component={Board} />
           <Route path="/post/:id" component={BoardDetail} />
           <Route path="*" component={NotFound} status={404} />

@@ -7,7 +7,6 @@ import {
     SortWrap,
     StyledSlider,
 } from 'styles/board/BoardCarousel.style';
-import { CarouselData } from 'utils/TempData';
 
 const BoardCarousel = (props) => {
     const topicList = useSelector((state) => state.topic.result);
