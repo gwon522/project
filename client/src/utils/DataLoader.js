@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const settingAxios = axios.create({
+const Api = axios.create({
     baseURL: `localHost:5050`,
     headers: {
         Accept: 'application/json',
@@ -11,11 +11,15 @@ const settingAxios = axios.create({
 export const DataLoader = (method, uri, data) => {
     switch (method) {
         case 'get':
-            return settingAxios.get(uri);
+            return Api.get(uri);
         case 'post':
-            return settingAxios
-                .post(uri, JSON.stringify(data))
-                .then((result) => result.data);
+            return Api.post(uri, JSON.stringify(data)).then(
+                (result) => result.data,
+            );
+        case 'delete':
+            return Api.delete(uri, json.stringify(data));
+        case 'patch':
+            return Api.patch(uri.json.stringify(data));
         default:
             throw Error('not exist Method');
     }
