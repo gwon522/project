@@ -1,20 +1,18 @@
-import BoardCarousel from "component/board/BoardCarousel";
-import BoardList from "component/board/BoardList";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { ArticleList, BoardWrap } from "styles/board/Board.style";
+import BoardCarousel from 'component/board/BoardCarousel';
+import BoardList from 'component/board/BoardList';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { ArticleList, BoardWrap } from 'styles/board/Board.style';
 
-
-const Board = () => {
-
+const Board = (props) => {
     return (
         <BoardWrap>
             <BoardCarousel />
             <ArticleList>
-                <BoardList />
+                <BoardList id={props.match.params.id} />
             </ArticleList>
         </BoardWrap>
-    )
-}
+    );
+};
 
 export default Board;
