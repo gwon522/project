@@ -79,7 +79,7 @@ const BoardWrite = () => {
                             onChange={onChangeHandler}
                         >
                             {topicList.map((item) => (
-                                <option value={item.cd_id}>
+                                <option key={item.cd_id} value={item.cd_id}>
                                     {item.cd_name}
                                 </option>
                             ))}
