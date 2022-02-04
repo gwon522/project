@@ -1,22 +1,29 @@
-
-import axios from "axios";
-import { Comment } from "component/index";
-import { ReComment } from "component/ReComment";
-import { useEffect, useState } from "react";
-import { ReplyArea, ReplyButton } from "styles/board/BoardDetail.style";
-import { Article, ArticleBody, ArticleComment, ArticleHead, ArticleInfo, CommentLink, Contents, LikeLink, Name, TopicLink } from "styles/board/BoardDetail.style";
-import { FuncSpan, InfoFnc, NameColor, StyledLink, WrapInfo } from "styles/Global.style";
-
+import axios from 'axios';
+import { Comment } from 'component/index';
+import { ReComment } from 'component/ReComment';
+import { useEffect, useState } from 'react';
+import { ReplyArea, ReplyButton } from 'styles/board/BoardDetail.style';
+import {
+    Article,
+    ArticleBody,
+    ArticleComment,
+    ArticleHead,
+    ArticleInfo,
+    CommentLink,
+    Contents,
+    LikeLink,
+    Name,
+    TopicLink,
+} from 'styles/board/BoardDetail.style';
+import {
+    FuncSpan,
+    InfoFnc,
+    NameColor,
+    StyledLink,
+    WrapInfo,
+} from 'styles/Global.style';
 
 const BoardDetail = () => {
-
-    const fetch = async () => {
-        axios.get('/api', { params: { data: '111' } }).then(res => console.log(res.data));
-    }
-    useEffect(() => {
-        fetch();
-    }, []);
-
     return (
         <Contents>
             <ArticleHead>
@@ -24,11 +31,12 @@ const BoardDetail = () => {
                     <StyledLink to="/topic/all">토픽</StyledLink>
                     <TopicLink to="/topic/블라블라">블라블라</TopicLink>
                 </h1>
-                <h2>
-                    제목부분
-                </h2>
+                <h2>제목부분</h2>
                 <Name>
-                    <StyledLink style={NameColor} to="/">직장명</StyledLink> · 아이디
+                    <StyledLink style={NameColor} to="/">
+                        직장명
+                    </StyledLink>{' '}
+                    · 아이디
                 </Name>
                 <WrapInfo func="detail">
                     <FuncSpan func="time">시간</FuncSpan>
@@ -52,15 +60,16 @@ const BoardDetail = () => {
                     <ReplyArea>
                         <ReplyButton>댓글을 남겨주세요.</ReplyButton>
                     </ReplyArea>
+                    {
+                        //코멘트에 해당글의 ID를 주어서 코멘트 테이블에서 불러오기
+                        //RECOMENT 처리 어떻게 할지 생각
+                    }
                     <Comment />
                     <ReComment />
                 </div>
             </ArticleComment>
-
         </Contents>
-    )
-
-}
-
+    );
+};
 
 export default BoardDetail;

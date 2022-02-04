@@ -7,6 +7,10 @@ router.get('/', (req, res) => {
     res.send('데이터');
 });
 
+router.get('/homeList', (req, res) => {
+    db.query(`select * from board_tb `);
+});
+
 //carousel에 사용, 메인페이지 사용(컬럼 추가 필요할 수 있음)
 router.get('/topicList', (req, res) => {
     db.query(

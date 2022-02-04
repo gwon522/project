@@ -2,27 +2,27 @@ import createRequestAction from 'utils/createRequestAction';
 import { handleActions } from 'redux-actions';
 import produce from 'immer';
 
-export const topicActions = createRequestAction('TOPIC');
+export const homeActions = createRequestAction('Home');
 
 const initialState = {
-    topicSuccess: false,
-    topicError: '',
-    result: [{ cd_id: '0', cd_name: '토픽베스트' }],
+    homeSuccess: false,
+    homeError: '',
+    result: [],
     type: '',
 };
 
 const reducer = handleActions(
     {
-        [topicActions.REQUEST]: (state, action) => state,
-        [topicActions.SUCCESS]: (state, action) => {
+        [homeActions.REQUEST]: (state, action) => state,
+        [homeActions.SUCCESS]: (state, action) => {
             return produce(state, (draft) => {
-                draft.topicSuccess = true;
+                draft.homeSuccess = true;
                 draft.result = action.payload.result;
             });
         },
-        [topicActions.FAILURE]: (state, action) => {
+        [homeActions.FAILURE]: (state, action) => {
             return produce(state, (draft) => {
-                draft.topicError = action.payload.error;
+                draft.homeError = action.payload.error;
             });
         },
     },
