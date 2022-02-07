@@ -7,13 +7,13 @@ export const topicActions = createRequestAction('TOPIC');
 const initialState = {
     topicSuccess: false,
     topicError: '',
-    result: [{ cd_id: '0', cd_name: '토픽베스트' }],
+    result: [],
     type: '',
 };
 
 const reducer = handleActions(
     {
-        [topicActions.REQUEST]: (state, action) => state,
+        [topicActions.REQUEST]: (state, _action) => state,
         [topicActions.SUCCESS]: (state, action) => {
             return produce(state, (draft) => {
                 draft.topicSuccess = true;

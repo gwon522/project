@@ -1,7 +1,6 @@
 
 import { Topic, Title, Article, NormalInfoWrap, FuncLink, TopicLink, styleds, DetailLink } from 'styles/Home.style';
 import { FaCrown } from 'react-icons/fa';
-import { HideI } from '../../styles/Home.style';
 
 export const Topics = (props) => {
     const topicName = props.name;
@@ -13,10 +12,10 @@ export const Topics = (props) => {
         <Topic>
             <Title><FaCrown style={styleds.faIcon} />{topicName}</Title>
             {topicList.map((data, i) =>
-                <Article>
-                    <TopicLink to={`/post/${data.seq}`}>{data.title}</TopicLink>
+                <Article key={i}>
+                    <TopicLink to={`/post/1`}>{data.title}</TopicLink>
                     <NormalInfoWrap>
-                        <FuncLink to={`/post/${data.seq}`}><HideI>뷰</HideI>{data.view}</FuncLink>
+                        <FuncLink to={`/post/1`}>{data.view}</FuncLink>
                     </NormalInfoWrap>
                 </Article>
             )}

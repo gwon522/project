@@ -287,17 +287,7 @@ export const BestInfoWrap = styled(NormalInfoWrap)`
         }
     }
 `
-export const HideI = styled.i`
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    font-size: 1px;
-    line-height: 100px;
-    white-space: nowrap;
-`
+
 export const styleds = {
     faIcon: {
         position: 'absolute',

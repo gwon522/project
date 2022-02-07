@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { StyledLink } from 'styles/Global.style';
 import { Container, Logo, Item, Nav, ItemList, HeaerWrapper, NavMask, NavTab, Function, Explain, ActionWrap, ActionLink } from "../styles/Header.style";
@@ -11,20 +11,6 @@ export const Header = (props) => {
                     <Link to="/">blind</Link>
                     <em>Temp</em>
                 </Logo>
-                <Nav>
-                    <NavMask>
-                        <NavTab>
-                            <ItemList>
-                                <Item>
-                                    <StyledLink to="/">홈</StyledLink>
-                                </Item>
-                                <Item>
-                                    <StyledLink to="/review">리뷰</StyledLink>
-                                </Item>
-                            </ItemList>
-                        </NavTab>
-                    </NavMask>
-                </Nav>
                 <Function>
                     <Explain><span>테스트용데이터</span></Explain>
                     <ActionWrap>

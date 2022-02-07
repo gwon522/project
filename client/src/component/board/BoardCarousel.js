@@ -12,9 +12,9 @@ const BoardCarousel = (props) => {
     const topicList = useSelector((state) => state.topic.result);
     const dispatch = useDispatch();
     useEffect(() => {
-        if (topicList) return;
+        // if (topicList) return;
         dispatch(topicActions.request());
-    }, [dispatch]);
+    }, []);
 
     const settings = {
         dots: false,
@@ -29,7 +29,6 @@ const BoardCarousel = (props) => {
     return (
         <CarouselWrap>
             <StyledSlider {...settings} style={{ width: '90%' }}>
-                {/* onClick={getPost(`/topic/${item.cd_name}`)} */}
                 {topicList.map((item) => (
                     <div key={item.cd_id}>
                         <CarouselLink to={`/topic/${item.cd_name}`}>
@@ -40,7 +39,7 @@ const BoardCarousel = (props) => {
             </StyledSlider>
             <SortWrap>
                 <span>
-                    <a>설정값</a>
+                    <a to="/">설정값</a>
                 </span>
             </SortWrap>
         </CarouselWrap>

@@ -1,28 +1,41 @@
 import { BestTopic, Title, ArticleBest, ArticleBestTag, ArticleTitle, BestInfoWrap, FuncLink, styleds, DetailLink } from 'styles/Home.style';
 import { FaCrown } from 'react-icons/fa';
 import { StyledLink } from 'styles/Global.style';
-import { HideI } from '../../styles/Home.style';
-import { BestData } from '../../utils/TempData';
+import { useEffect, useState } from 'react';
+import { bestTopicListAPI } from 'store/apis/topic';
+
 
 export const BestTopics = (props) => {
-    const TempTopicData = BestData;
+    const [bestTopic, setBestTopic] = useState([]);
+    useEffect(() => {
+        bestTopicListAPI().then(result => setBestTopic(result));
+    }, []);
+
     return (
         <BestTopic>
             <Title><FaCrown style={styleds.faIcon} />토픽 베스트</Title>
-            {TempTopicData.map((data, index) =>
-                <ArticleBest key={index}>
-                    <ArticleBestTag><StyledLink to="/topic/토픽베스트">{data.category}</StyledLink></ArticleBestTag>
-                    <ArticleTitle to="/post/제목" etc="link">
-                        {data.title}
+            {bestTopic.length !== 0 ?
+                bestTopic.map((data, index) =>
+                    <ArticleBest key={index}>
+                        <ArticleBestTag><StyledLink to={`/topic/${data.cd_name}`}>{data.cd_name}</StyledLink></ArticleBestTag>
+                        <ArticleTitle to={`/post/${data.b_id}`} etc="link">
+                            {data.b_title}
+                        </ArticleTitle>
+                        <BestInfoWrap>
+                            <FuncLink to={`/post/${data.b_id}`} func="like">{data.likes}</FuncLink>
+                            <FuncLink to={`/post/${data.b_id}`} func="cmt">{data.comment}</FuncLink>
+                        </BestInfoWrap>
+                    </ArticleBest>
+                )
+                :
+                <ArticleBest>
+                    <ArticleTitle to='/' etc="link">
+                        게시글이 없습니다.
                     </ArticleTitle>
-                    <BestInfoWrap>
-                        <FuncLink to="/like/제목" func="like"><HideI>좋아요</HideI>{data.like}</FuncLink>
-                        <FuncLink to="/post/제목" func="cmt"><HideI>댓글</HideI>{data.cmt}</FuncLink>
-                    </BestInfoWrap>
                 </ArticleBest>
-            )}
+            }
 
-            <DetailLink to="/topic/best">더보기</DetailLink>
+            <DetailLink to="/topic/토픽베스트">더보기</DetailLink>
         </BestTopic>
     )
 }

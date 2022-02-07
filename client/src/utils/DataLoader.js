@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { json } from 'body-parser';
 
 const Api = axios.create({
     baseURL: `localHost:5050`,
@@ -8,18 +9,18 @@ const Api = axios.create({
     },
 });
 
-export const DataLoader = (method, uri, data) => {
+export const DataLoader = async (method, uri, data) => {
     switch (method) {
         case 'get':
-            return Api.get(uri);
+            return await Api.get(uri);
         case 'post':
-            return Api.post(uri, JSON.stringify(data)).then(
+            return await Api.post(uri, JSON.stringify(data)).then(
                 (result) => result.data,
             );
         case 'delete':
-            return Api.delete(uri, json.stringify(data));
+            return await Api.delete(uri, json.stringify(data));
         case 'patch':
-            return Api.patch(uri.json.stringify(data));
+            return await Api.patch(uri, json.stringify(data));
         default:
             throw Error('not exist Method');
     }
