@@ -1,13 +1,19 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Aside, Search } from 'component/index';
 import { ArticleList, Main, MainWrap } from 'styles/Home.style';
 import { BestTopics, Topics } from 'component/Topic/index'
 import { TopicData } from 'utils/TempData';
+import { useSelector, useDispatch } from 'react-redux';
+import { topicActions } from '../store/modules/topic';
 
 const HomeComponent = () => {
-    const topic = TopicData;
-    //axios 사용하여 데이터 불러오기
+    const topicList = useSelector(state => state.topic.result);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (topicList.length !== 0) return;
+        dispatch(topicActions.request());
+    }, [topicList]);
 
     return (
         <MainWrap>
@@ -16,9 +22,8 @@ const HomeComponent = () => {
                 <ArticleList>
                     <BestTopics />
                     {
-                        //map 사용해서 Topic 반복
-                        topic.map((data, i) =>
-                            <Topics {...data} key={i} />
+                        topicList.map((data, i) =>
+                            <Topics key={i} {...data} />
                         )
                     }
                 </ArticleList>

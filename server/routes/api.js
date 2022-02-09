@@ -19,11 +19,18 @@ router.get('/bestTopic', (req, res) => {
 });
 
 router.get('/topic', (req, res) => {
-    db.query(`select * from board_tb `, (err, result) => {
+    var sql = 'select b_id,b_title,b_view from board_tb a, mst_cd_dtl_tb b  where a.b_category = b.cd_id';
+    const { cd_id, limit } = req.query;
+    console.log(req.query);
+    sql += ` and a.b_category = ${Number(cd_id)}`;
+    sql += ` limit ${Number(limit)}`;
+
+    db.query(sql, (err, result) => {
         if (err) {
             console.log('err')
             throw err;
         }
+        console.log(sql);
         res.send(result);
     });
 });
