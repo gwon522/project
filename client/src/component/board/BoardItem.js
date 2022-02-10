@@ -2,23 +2,22 @@ import React from "react";
 import { ArticleListPreView, BoardLink, CommentLink, CompanyName, ContentLink, Detail, Image, ImageLink, ImageWrap, LikeLink, ScrapeLink, SubWrap, TimeLink, Title, TitleWrap, ViewLink } from "styles/board/BoardItem.style";
 import { InfoFnc, StyledLink, WrapInfo } from 'styles/Global.style';
 
+//게시판 목록의 item
 const BoardItem = (props) => {
-    const title = props.item.title;
-    const detail = props.item.detail;
     const image = props.item.image;
-    const id = props.item.id;
+    const { b_id, b_title, b_content, b_view, likes, b_company } = props.item;
 
     return (
         <ArticleListPreView>
             <TitleWrap image={image ? true : false}>
                 <Title image={image ? true : false}>
-                    <BoardLink to={`/post/${id}`}>{title}</BoardLink>
+                    <BoardLink to={`/post/${b_id}`}>{b_title}</BoardLink>
                 </Title>
                 <Detail>
-                    <ContentLink to={`/post/${id}`}>{detail}</ContentLink>
+                    <ContentLink to={`/post/${b_id}`}>{b_content}</ContentLink>
                 </Detail>
                 <ImageWrap>
-                    <ImageLink to={`/post/${id}`}>
+                    <ImageLink to={`/post/${b_id}`}>
                         <Image />
                         <em>+1</em>
                     </ImageLink>
@@ -26,12 +25,12 @@ const BoardItem = (props) => {
             </TitleWrap>
             <SubWrap>
                 <CompanyName>
-                    <StyledLink to={`/post/${id}`}>직장</StyledLink>
+                    <StyledLink to={`/post/${b_id}`}>{b_company}</StyledLink>
                 </CompanyName>
                 <WrapInfo>
-                    <ViewLink to={`/post/${id}`}>22</ViewLink>
-                    <LikeLink to={`/post/${id}`}>22</LikeLink>
-                    <CommentLink to={`/post/${id}`}>22</CommentLink>
+                    <ViewLink to={`/post/${b_id}`}>{b_view}</ViewLink>
+                    <LikeLink to={`/post/${b_id}`}>{likes}</LikeLink>
+                    <CommentLink to={`/post/${b_id}`}>{ }</CommentLink>
                     <InfoFnc>
                         <TimeLink to="/">40분</TimeLink>
                         <ScrapeLink to="/" />

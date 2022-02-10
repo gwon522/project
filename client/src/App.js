@@ -17,6 +17,10 @@ const App = () => {
   const logoutHandler = () => {
     setIsLoggedIn(false);
   }
+  const ScrollToTop = () => {
+    window.scrollTo(0, 0);
+    return null;
+  }
 
   return (
     <Layout>
@@ -31,6 +35,7 @@ const App = () => {
           <Route path="/post/:id" component={BoardDetail} />
           <Route path="*" component={NotFound} status={404} />
         </Switch>
+        <Route component={ScrollToTop} />
       </MainContainer>
       <Footer />
     </Layout>

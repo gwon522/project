@@ -21,7 +21,6 @@ const Header = styled.div`
 export const Container = styled(Header)`
     position: relative;
     z-index: 100;
-    height: inherit;
     min-height: 80px;
 
     @media screen and (min-width:1100px){

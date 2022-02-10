@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, LoginWrapper, Input } from 'styles/Login.style';
 
+
+//회원가입 화면
 const SignupPage = () => {
     return (
         <LoginWrapper>

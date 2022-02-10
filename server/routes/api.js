@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.send('데이터');
 });
 
-router.get('/bestTopic', (req, res) => {
+router.get('/bestTopic10', (req, res) => {
     const sql = 'select b_id,u_id,cd_name,b_title,b_content,b_view,b_imageCd,b_date,likes, (select count(*) from comment_tb where b_id = a.b_id) as comment from board_tb a, mst_cd_dtl_tb b  where a.b_category = b.cd_id and b.category_id =1 limit 10';
     db.query(sql, (err, result) => {
         if (err) {
@@ -18,10 +18,9 @@ router.get('/bestTopic', (req, res) => {
     });
 });
 
-router.get('/topic', (req, res) => {
+router.get('/topic5', (req, res) => {
     var sql = 'select b_id,b_title,b_view from board_tb a, mst_cd_dtl_tb b  where a.b_category = b.cd_id';
     const { cd_id, limit } = req.query;
-    console.log(req.query);
     sql += ` and a.b_category = ${Number(cd_id)}`;
     sql += ` limit ${Number(limit)}`;
 
@@ -30,7 +29,6 @@ router.get('/topic', (req, res) => {
             console.log('err')
             throw err;
         }
-        console.log(sql);
         res.send(result);
     });
 });
@@ -49,10 +47,31 @@ router.get('/topicList', (req, res) => {
     );
 });
 
-//토픽 조회시
+//토픽 조회시 (데이터양이 적어서 당일건이 아닌 전체전에서 50개 조회로);
 router.get('/topic/:id', (req, res) => {
-    //페이지네이션 처리해야되는지, 쓰로틀링 적용해서 무한스크롤?
-    db.query(`select * from board_tb where b_category = ${id}`, (err, result) => {
+    var start = 0;
+    const limit = 50;
+    const id = req.query.id;
+    const sort = '';
+
+    if (typeof sort !== 'undefined') {
+        sort.concat(sort === 'new' ? `order by b_date desc` : `b_view desc`);
+    }
+    const sql = 'select b_id, b_title, b_content,b_view,likes, (select count(*) from comment_tb where b_id = a.b_id) as comment, u_company from board_tb a, user_tb b where a.u_id = b.u_id';
+    //토픽id가 베스트토픽일때는 모든글에서 뷰가 제일 높은거로 50개 조회해오기
+    if (id === '베스트토픽') {
+        sql.concat('order by b_view desc');
+    } else {
+        //그외에 카테고리에서 50개 조회
+        sql.concat(`and b_category=${id}`);
+    }
+    //페이지네이션 param들어오면 start, end 값 변경
+    if (typeof req.query.start !== 'undefined') {
+        start = req.query.start;
+    }
+    sql.concat(` limit ${start},${limit}`);
+
+    db.query(sql, (err, result) => {
         if (err) {
             console.log('error');
             throw err;

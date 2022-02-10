@@ -23,6 +23,7 @@ import {
     WrapInfo,
 } from 'styles/Global.style';
 
+//게시판 상세글
 const BoardDetail = () => {
     return (
         <Contents>

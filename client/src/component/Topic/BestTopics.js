@@ -4,7 +4,7 @@ import { StyledLink } from 'styles/Global.style';
 import { useEffect, useState } from 'react';
 import { bestTopicListAPI } from 'store/apis/topic';
 
-
+//베스트토픽
 export const BestTopics = (props) => {
     const [bestTopic, setBestTopic] = useState([]);
     useEffect(() => {

@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ArticleList, BoardWrap } from 'styles/board/Board.style';
 
+//게시판 화면
 const Board = (props) => {
     return (
         <BoardWrap>

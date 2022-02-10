@@ -295,7 +295,7 @@ export const styleds = {
         left: '0',
         transform: 'translateY(-50%)',
         display: 'inline-block',
-        width: '32px',
-        height: '32px'
+        width: '24px',
+        height: '24px'
     }
 }

@@ -8,6 +8,7 @@ import {
     StyledSlider,
 } from 'styles/board/BoardCarousel.style';
 
+//게시판 목록(carousel)
 const BoardCarousel = (props) => {
     const topicList = useSelector((state) => state.topic.result);
     const dispatch = useDispatch();

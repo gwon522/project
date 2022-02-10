@@ -7,6 +7,7 @@ import { TopicData } from 'utils/TempData';
 import { useSelector, useDispatch } from 'react-redux';
 import { topicActions } from '../store/modules/topic';
 
+//메인화면
 const HomeComponent = () => {
     const topicList = useSelector(state => state.topic.result);
     const dispatch = useDispatch();

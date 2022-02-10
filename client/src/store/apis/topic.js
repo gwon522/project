@@ -5,9 +5,9 @@ export default async function topicAPI() {
 };
 
 export async function bestTopicListAPI() {
-    return await axios.get('/api/bestTopic').then(result => { return result.data });
+    return await axios.get('/api/bestTopic10').then(result => { return result.data });
 }
 
 export async function TopicListAPI(sendData) {
-    return await axios.get('/api/topic', { params: sendData }).then(result => { return result.data });
+    return await axios.get('/api/topic5', { params: sendData }).then(result => { return result.data });
 }

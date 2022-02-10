@@ -4,6 +4,7 @@ import { Topic, Title, Article, NormalInfoWrap, FuncLink, TopicLink, styleds, De
 import { FaCrown } from 'react-icons/fa';
 import { TopicListAPI } from 'store/apis/topic';
 
+//메인화면의 토픽리스트
 export const Topics = (props) => {
     const { cd_id, cd_name } = props;
     const [topicList, setTopicList] = useState([]);
