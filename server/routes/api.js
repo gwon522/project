@@ -1,5 +1,4 @@
 const express = require('express');
-const { DEC8_BIN } = require('mysql/lib/protocol/constants/charsets');
 const router = express.Router();
 const db = require('../db/db');
 

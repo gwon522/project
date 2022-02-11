@@ -12,7 +12,7 @@ const useDebounce = (value, delay) => {
         return () => {
             clearTimeout(timeoutHandler);
         };
-    }, [value]);
+    }, [value, delay]);
 
     return debounce;
 };

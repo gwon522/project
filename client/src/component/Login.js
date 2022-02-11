@@ -48,7 +48,7 @@ export const Login = () => {
             <FuncUl>
                 <FuncList><StyledLink to="/"><span>아이디 찾기</span></StyledLink></FuncList>
                 <FuncList><StyledLink to="/"><span>비밀번호 찾기</span></StyledLink></FuncList>
-                <FuncList><StyledLink to="/"><span>회원가입</span></StyledLink></FuncList>
+                <FuncList><StyledLink to="/signup"><span>회원가입</span></StyledLink></FuncList>
             </FuncUl>
         </div>
     );

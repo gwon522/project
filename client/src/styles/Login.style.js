@@ -25,7 +25,6 @@ export const LoginTitle = styled.div`
     text-align: center;
     border-radius: 10px;
     padding-top:20px;
-
 `
 export const LoginContainer = styled.div`
     display:block;
@@ -81,19 +80,23 @@ export const Input = styled.input`
     background: #fff;
     box-sizing: border-box;
     border: solid 1px #dadada;
+    padding-left: 30px;
 `;
 
 export const InputTop = styled(Input)`
     border-radius: 10px 10px 0 0;
-    padding-left: 30px;
 `;
 export const InputBottom = styled(Input)`
     border-radius: 0 0 10px 10px;
-    padding-left: 30px;
 `;
 
+export const TextBox = styled.div`
+    font-size:20px;
+    font-weight:normal;
+    color:#da3238;
+`
 
-export const Button = styled.div`
+export const Button = styled.button`
     font-size: 1.5rem;
     font-weight: 600;
     display: flex;
