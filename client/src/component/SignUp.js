@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react';
 import SignUpAPI, { CheckDuplicateIdAPI } from 'store/apis/user';
 import { Button, Input, LoginTitle, LoginContainer, InputTop, InputBottom, TextBox } from 'styles/Login.style';
 import useDebounce from '../hooks/useDebounce';
+import CryptoJS from 'crypto-js';
+import { useHistory } from 'react-router-dom';
 
 export const SignUp = () => {
+    const history = useHistory();
     const [checkId, setCheckId] = useState(false);
+    const [checkPw, setCheckPW] = useState(false);
 
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
     const [pwChk, setPwChk] = useState('');
     const [company, setCompany] = useState('');
     const debouncedId = useDebounce(id, 300);
+    const debouncedPw = useDebounce(pw, 300);
+    const debouncedPwChk = useDebounce(pwChk, 300);
 
     const changeId = (e) => {
         setId(e.target.value);
@@ -25,25 +31,55 @@ export const SignUp = () => {
         setCompany(e.target.value);
     }
 
+    //중복아이디 체크
     useEffect(() => {
+        setCheckId(false);
         CheckDuplicateIdAPI(debouncedId).then(result => {
             if (result) {
                 return setCheckId(true);
             }
-            setCheckId(false);
         });
     }, [debouncedId]);
+
+    //비밀번호 체크
+    useEffect(() => {
+        setCheckPW(false);
+        if (debouncedPw.length === 0 || debouncedPwChk.length === 0) {
+            return;
+        }
+        if (debouncedPw !== debouncedPwChk) {
+            return setCheckPW(true);
+        }
+    }, [debouncedPw, debouncedPwChk]);
 
     const SignUpHandler = (e) => {
         e.preventDefault();
         //id 중복 아닌지, 비밀번호 둘다 일치하게 작성했는지, 직장명 빈칸 아닌지
+        if (debouncedId.length === 0) {
+            return alert('아이디를 입력해 주세요.');
+        }
+        if (debouncedPw.length === 0) {
+            return alert('비밀번호를 입력해 주세요.');
+        }
+        if (company.length === 0) {
+            return alert('직장명을 입력해 주세요.');
+        }
+        if (checkId === true) {
+            return alert('아이디를 확인해 주세요.');
+        }
+        if (checkPw === true) {
+            return alert('비밀번호가 일치하지 않습니다.')
+        }
+
         const sendData = {
             id: id,
-            pw: pw,
+            pw: CryptoJS.AES.encrypt(pw, process.env.REACT_APP_SECRET_KEY).toString(),
             company: company
         }
-        console.log(sendData);
-        SignUpAPI(sendData).then(result => console.log(result));
+        SignUpAPI(sendData).then(result => {
+            alert(result);
+            history.goBack();
+        });
 
     }
     return (
@@ -69,7 +105,7 @@ export const SignUp = () => {
                             value={pwChk}
                             onChange={changePwChk}
                         />
-                        <TextBox check={checkId}>비밀번호가 다릅니다.</TextBox>
+                        <TextBox style={checkPw ? { display: 'block' } : { display: 'none' }}>비밀번호가 다릅니다.</TextBox>
                         <InputBottom
                             placeholder="직장명"
                             type="text"
