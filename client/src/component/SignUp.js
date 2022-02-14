@@ -53,7 +53,6 @@ export const SignUp = () => {
 
     const SignUpHandler = (e) => {
         e.preventDefault();
-        //id 중복 아닌지, 비밀번호 둘다 일치하게 작성했는지, 직장명 빈칸 아닌지
         if (debouncedId.length === 0) {
             return alert('아이디를 입력해 주세요.');
         }
@@ -76,11 +75,13 @@ export const SignUp = () => {
             company: company
         }
         SignUpAPI(sendData).then(result => {
+            //현재 alert로 가입완료 알려줌 화면분기 처리하는게 좋을 듯
             alert(result);
             history.goBack();
         });
 
     }
+
     return (
         <div>
             <LoginTitle> 회원가입

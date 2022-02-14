@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useDebounce from 'hooks/useDebounce';
-import { Button, InputTop, InputBottom, LoginContainer, FuncWrap, LoginTitle, FuncList, FuncUl } from 'styles/Login.style';
+import { Button, InputTop, InputBottom, LoginContainer, LoginTitle, FuncList, FuncUl } from 'styles/Login.style';
 import { StyledLink } from '../styles/Global.style';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'store/modules/login';
+import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
+    const history = useHistory();
+    const isToken = useSelector(state => state.login.token);
     const dispatch = useDispatch();
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
@@ -35,6 +38,11 @@ export const Login = () => {
             onLoginButtonClick();
         }
     }
+    useEffect(() => {
+        if (isToken) {
+            history.goBack();
+        }
+    }, [isToken])
     return (
         <div>
             <LoginTitle>로그인
