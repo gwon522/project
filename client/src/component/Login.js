@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import useDebounce from 'hooks/useDebounce';
 import { Button, InputTop, InputBottom, LoginContainer, FuncWrap, LoginTitle, FuncList, FuncUl } from 'styles/Login.style';
 import { StyledLink } from '../styles/Global.style';
-import CryptoJS from 'crypto-js';
 import { useDispatch } from 'react-redux';
 import { loginActions } from 'store/modules/login';
 
@@ -27,7 +26,7 @@ export const Login = () => {
     const onLoginButtonClick = () => {
         const sendData = {
             id: debounceId,
-            pw: CryptoJS.AES.encrypt(debouncePw, process.env.REACT_APP_SECRET_KEY).toString()
+            pw: debouncePw
         }
         dispatch(loginActions.request(sendData));
     }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import SignUpAPI, { CheckDuplicateIdAPI } from 'store/apis/user';
 import { Button, Input, LoginTitle, LoginContainer, InputTop, InputBottom, TextBox } from 'styles/Login.style';
 import useDebounce from '../hooks/useDebounce';
-import CryptoJS from 'crypto-js';
 import { useHistory } from 'react-router-dom';
 
 export const SignUp = () => {
@@ -73,7 +72,7 @@ export const SignUp = () => {
 
         const sendData = {
             id: id,
-            pw: CryptoJS.AES.encrypt(pw, process.env.REACT_APP_SECRET_KEY).toString(),
+            pw: pw,
             company: company
         }
         SignUpAPI(sendData).then(result => {
