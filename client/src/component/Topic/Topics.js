@@ -15,7 +15,7 @@ export const Topics = (props) => {
             limit: 5
         }
         TopicListAPI(sendData).then(result => setTopicList(result));
-    }, [])
+    }, [cd_id])
 
 
     return (

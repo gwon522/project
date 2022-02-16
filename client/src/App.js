@@ -3,20 +3,13 @@ import { Header, Footer } from 'component/index'
 import { Route, Switch } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
 import { Board, Home, Login, NotFound, Signup, BoardDetail, Write } from './pages/index';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { loginResultSelector } from 'utils/selector';
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const loginHandler = (id, passward) => {
-    console.log('로그인 버튼 눌러서 메서드 실행됨')
-    setIsLoggedIn(true);
-  }
-
-  const logoutHandler = () => {
-    setIsLoggedIn(false);
-  }
+  const isLogin = useSelector(loginResultSelector);
+  console.log('login체크', isLogin);
   const ScrollToTop = () => {
     window.scrollTo(0, 0);
     return null;
@@ -24,7 +17,7 @@ const App = () => {
 
   return (
     <Layout>
-      <Header onLogout={logoutHandler} />
+      <Header />
       <MainContainer>
         <Switch>
           <Route exact path="/" component={Home} />

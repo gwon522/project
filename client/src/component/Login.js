@@ -5,10 +5,11 @@ import { StyledLink } from '../styles/Global.style';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'store/modules/login';
 import { useHistory } from 'react-router-dom';
+import { loginResultSelector } from 'utils/selector';
 
 export const Login = () => {
     const history = useHistory();
-    const isToken = useSelector(state => state.login.token);
+    const isLogIn = useSelector(loginResultSelector);
     const dispatch = useDispatch();
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
@@ -23,8 +24,6 @@ export const Login = () => {
         if (e.target.name === 'pw') {
             setPw(e.target.value);
         }
-
-
     }
     const onLoginButtonClick = () => {
         const sendData = {
@@ -39,10 +38,11 @@ export const Login = () => {
         }
     }
     useEffect(() => {
-        if (isToken) {
+        if (isLogIn) {
             history.goBack();
         }
-    }, [isToken])
+    }, [isLogIn, history]);
+
     return (
         <div>
             <LoginTitle>로그인

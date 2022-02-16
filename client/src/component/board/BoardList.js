@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BoardItem from './BoardItem';
 import styled from 'styled-components';
-import BoardTempData from './BoardTempData';
 import { boardListAPI } from 'store/apis/board';
 
 const ArticleList = styled.div`
@@ -19,8 +18,6 @@ const BoardList = (props) => {
     //넘어온 토픽명
     const topicName = props.id;
 
-    const item = BoardTempData;
-
     //무한스크롤 적용하려면 데이터 가지고있는거에 추가하는게 유리한가?
     const [boardList, setBoardList] = useState([]);
     const [sort, setSort] = useState();
@@ -34,7 +31,7 @@ const BoardList = (props) => {
             sort: sort
         }
         boardListAPI(sendData).then(result => setBoardList(result.data));
-    }, [])
+    }, [topicName, pagenation, sort])
 
 
     //boardItem에 토픽명칭만 넣어서 찾아주기

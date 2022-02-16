@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Aside, Search } from 'component/index';
 import { ArticleList, Main, MainWrap } from 'styles/Home.style';
 import { BestTopics, Topics } from 'component/Topic/index'
-import { TopicData } from 'utils/TempData';
 import { useSelector, useDispatch } from 'react-redux';
 import { topicActions } from '../store/modules/topic';
 
@@ -14,7 +13,7 @@ const HomeComponent = () => {
     useEffect(() => {
         if (topicList.length !== 0) return;
         dispatch(topicActions.request());
-    }, [topicList]);
+    }, [topicList, dispatch]);
 
     return (
         <MainWrap>

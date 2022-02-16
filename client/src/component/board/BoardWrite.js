@@ -52,7 +52,7 @@ const BoardWrite = () => {
     }
     useEffect(() => {
         dispatch(topicActions.request());
-    }, []);
+    }, [dispatch]);
 
     return (
         <Contents>

@@ -1,7 +1,4 @@
-import axios from 'axios';
-import { Comment } from 'component/index';
-import { ReComment } from 'component/ReComment';
-import { useEffect, useState } from 'react';
+import { Comment, ReComment } from 'component/index';
 import { ReplyArea, ReplyButton } from 'styles/board/BoardDetail.style';
 import {
     Article,

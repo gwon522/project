@@ -51,6 +51,7 @@ router.post('/Login', (req, res) => {
         //id 없을 때
         if (result.length === 0) {
             const responseData = {
+                loginSuccess: false,
                 token: '',
                 id: '',
                 text: '아이디가 존재하지 않습니다.',
@@ -60,13 +61,13 @@ router.post('/Login', (req, res) => {
             //아이디 존재 할 경우
             const isEqualPw = bcrypt.compareSync(pw, result[0].u_pw);
 
-            console.log('isEqual', isEqualPw);
             if (isEqualPw) {
                 const token = jwt.sign({
                     u_id: result[0].u_id
                 }, JWT_SECRET_KEY, { expiresIn: '1h' });
 
                 const responseData = {
+                    loginSuccess: true,
                     token: token,
                     text: '',
                     id: result[0].u_id
@@ -75,6 +76,7 @@ router.post('/Login', (req, res) => {
                 res.send(responseData);
             } else {
                 const responseData = {
+                    loginSuccess: false,
                     token: '',
                     id: '',
                     text: '비밀번호가 일치하지 않습니다.'
@@ -82,7 +84,6 @@ router.post('/Login', (req, res) => {
                 res.send(responseData);
             }
         }
-
     })
 })
 module.exports = router;

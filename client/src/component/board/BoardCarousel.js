@@ -15,7 +15,7 @@ const BoardCarousel = (props) => {
     useEffect(() => {
         // if (topicList) return;
         dispatch(topicActions.request());
-    }, []);
+    }, [dispatch]);
 
     const settings = {
         dots: false,
@@ -40,7 +40,7 @@ const BoardCarousel = (props) => {
             </StyledSlider>
             <SortWrap>
                 <span>
-                    <a to="/">설정값</a>
+                    <a href="/">설정값</a>
                 </span>
             </SortWrap>
         </CarouselWrap>
