@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express = require('express');
 const router = express.Router();
 const db = require('../db/db');
@@ -18,7 +19,7 @@ router.get('/bestTopic10', (req, res) => {
 });
 
 router.get('/topic5', (req, res) => {
-    var sql = 'select b_id,b_title,b_view from board_tb a, mst_cd_dtl_tb b  where a.b_category = b.cd_id';
+    let sql = 'select b_id,b_title,b_view from board_tb a, mst_cd_dtl_tb b  where a.b_category = b.cd_id';
     const { cd_id, limit } = req.query;
     sql += ` and a.b_category = ${Number(cd_id)}`;
     sql += ` limit ${Number(limit)}`;
@@ -47,29 +48,32 @@ router.get('/topicList', (req, res) => {
 });
 
 //토픽 조회시 (데이터양이 적어서 당일건이 아닌 전체전에서 50개 조회로);
-router.get('/topic/:id', (req, res) => {
+router.post('/topic/:id', (req, res) => {
     var start = 0;
     const limit = 50;
-    const id = req.query.id;
-    const sort = '';
+    const id = req.body.id;
+    const sort = req.body.sort;
 
-    if (typeof sort !== 'undefined') {
-        sort.concat(sort === 'new' ? `order by b_date desc` : `b_view desc`);
-    }
-    const sql = 'select b_id, b_title, b_content,b_view,likes, (select count(*) from comment_tb where b_id = a.b_id) as comment, u_company from board_tb a, user_tb b where a.u_id = b.u_id';
+    let sql = 'select b_id, b_title, b_content,b_view,likes, (select count(*) from comment_tb where b_id = a.b_id) as comment, u_company from board_tb a, user_tb b, mst_cd_dtl_tb c where a.u_id = b.u_id and a.b_category = c.cd_id';
     //토픽id가 베스트토픽일때는 모든글에서 뷰가 제일 높은거로 50개 조회해오기
     if (id === '베스트토픽') {
-        sql.concat('order by b_view desc');
+        sql += 'order by b_view desc';
     } else {
         //그외에 카테고리에서 50개 조회
-        sql.concat(`and b_category=${id}`);
+        sql += ` and c.cd_name = '${id}'`;
+    }
+    if (typeof sort !== '') {
+        if (id === '베스트토픽') {
+            sql += sort === 'new' ? ', b_date desc' : ', b_view desc';
+        } else {
+            sql += sort === 'new' ? `order by b_date desc` : `order by b_view desc`;
+        }
     }
     //페이지네이션 param들어오면 start, end 값 변경
-    if (typeof req.query.start !== 'undefined') {
-        start = req.query.start;
+    if (typeof req.body.start !== 'undefined') {
+        start = req.body.start;
     }
-    sql.concat(` limit ${start},${limit}`);
-
+    sql += ` limit ${start},${limit}`;
     db.query(sql, (err, result) => {
         if (err) {
             console.log('error');

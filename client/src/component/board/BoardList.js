@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import BoardItem from './BoardItem';
 import styled from 'styled-components';
-import { boardListAPI } from 'store/apis/board';
+import { useDispatch, useSelector } from 'react-redux';
+import { boardActions } from 'store/modules/board';
+import { boardSelector } from 'utils/selector';
 
 const ArticleList = styled.div`
     display: flex;
@@ -17,10 +19,10 @@ const ArticleList = styled.div`
 const BoardList = (props) => {
     //넘어온 토픽명
     const topicName = props.id;
-
     //무한스크롤 적용하려면 데이터 가지고있는거에 추가하는게 유리한가?
-    const [boardList, setBoardList] = useState([]);
-    const [sort, setSort] = useState();
+    const dispatch = useDispatch();
+    const boardList = useSelector(boardSelector);
+    const [sort, setSort] = useState('');
     const [pagenation, setPagenation] = useState(0);
 
     useEffect(() => {
@@ -30,16 +32,17 @@ const BoardList = (props) => {
             start: pagenation,
             sort: sort
         }
-        boardListAPI(sendData).then(result => setBoardList(result.data));
-    }, [topicName, pagenation, sort])
+        dispatch(boardActions.request(sendData));
+    }, [dispatch, pagenation, sort, topicName]);
 
 
     //boardItem에 토픽명칭만 넣어서 찾아주기
     return (
         <ArticleList>
-            {boardList.map((item) => {
-                return <BoardItem key={item.id} item={item} />;
-            })}
+            {boardList &&
+                boardList.map((item, index) => {
+                    return <BoardItem key={index} item={item} />;
+                })}
         </ArticleList>
     );
 };
