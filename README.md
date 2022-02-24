@@ -1,16 +1,11 @@
 # Project
 
 개발 환경
-* VSCode
-* React, React-route, 
-* Redux, Redux-saga, Redux-actions, 
-* axios
+|UI라이브러리|React-Router|React-Saga|상태관리|
+|-|-|-|-|
+|리액트|테스트|테스트|리덕스|
 
-
-> vscode 사용한 확장
-> 1. vscode-styled-component   
-> 2. ESLint   
-> 3. Prettier
-> 4. Auto Import   
-
+|스타일링|백엔드|백엔드라이브러리|DB|
+|-|-|-|-|
+|스컴|노드|익스|my|
 <hr>
