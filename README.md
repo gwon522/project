@@ -1,4 +1,4 @@
-# Project
+# 블라인드 클론코딩 프로젝트
 
 개발 환경
 |UI라이브러리|React-Router|상태관리|Redux-Saga|
