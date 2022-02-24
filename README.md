@@ -8,5 +8,6 @@
 |스타일링|백엔드|백엔드라이브러리|DB|
 |-|-|-|-|
 |<img src="./images/styled-components.png" width="250">|<img src="./images/nodejs.png" width="250">|<img src="./images/express.png" width="250">|<img src="./images/mysql.png" width="250">|
-<hr>
+<hr><br>
+
 ## 프로젝트를 통해 배운점 
