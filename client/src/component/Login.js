@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import useDebounce from 'hooks/useDebounce';
 import { Button, InputTop, InputBottom, LoginContainer, LoginTitle, FuncList, FuncUl } from 'styles/Login.style';
 import { StyledLink } from '../styles/Global.style';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginActions } from 'store/modules/login';
+import { loginActions } from 'store/modules/user';
 import { useHistory } from 'react-router-dom';
 import { loginResultSelector } from 'utils/selector';
 
@@ -13,9 +12,6 @@ export const Login = () => {
     const dispatch = useDispatch();
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
-
-    const debounceId = useDebounce(id, 300);
-    const debouncePw = useDebounce(pw, 300);
 
     const onChangeInput = (e) => {
         if (e.target.name === 'id') {
@@ -27,8 +23,8 @@ export const Login = () => {
     }
     const onLoginButtonClick = () => {
         const sendData = {
-            id: debounceId,
-            pw: debouncePw
+            id: id,
+            pw: pw
         }
         dispatch(loginActions.request(sendData));
     }

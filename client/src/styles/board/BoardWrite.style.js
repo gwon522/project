@@ -1,4 +1,14 @@
+import ReactQuill from 'react-quill';
 import styled from 'styled-components'
+
+export const Contents = styled.div`
+    width: 100%;
+    min-height: 800px;
+`
+export const Quill = styled(ReactQuill)`
+    height: 200px;
+    padding-bottom: 30px;
+`
 
 export const SelectBox = styled.select`
     box-sizing: border-box;

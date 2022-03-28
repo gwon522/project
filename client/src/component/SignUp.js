@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SignUpAPI, { CheckDuplicateIdAPI } from 'store/apis/user';
+import { SignUpAPI, CheckDuplicateIdAPI } from 'store/apis/user';
 import { Button, Input, LoginTitle, LoginContainer, InputTop, InputBottom, TextBox } from 'styles/Login.style';
 import useDebounce from '../hooks/useDebounce';
 import { useHistory } from 'react-router-dom';

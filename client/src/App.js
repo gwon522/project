@@ -26,14 +26,9 @@ const App = () => {
           <PublicRoute component={Login} path="/login" restricted />
           <PublicRoute component={Signup} path="/signup" restricted />
           <PublicRoute component={Board} path="/topic/:id" />
-          <PublicRoute component={BoardDetail} path="post/:id" />
+          <PublicRoute component={BoardDetail} path="/post/:id" />
           <PrivateRoute component={Write} path="/write" />
           <PublicRoute component={NotFound} path="*" status={404} />
-          {/* <Route path="/login" component={Login} /> */}
-          {/* <Route path="/signup" component={Signup} />
-          <Route path="/write" component={Write} /> */}
-          {/* <Route path="/topic/:id" component={Board} />
-          <Route path="/post/:id" component={BoardDetail} /> */}
           {/* <Route path="*" component={NotFound} status={404} /> */}
         </Switch>
         <Route component={ScrollToTop} />

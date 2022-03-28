@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ReactQuill from 'react-quill';
+// import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -7,10 +7,9 @@ import {
     ArticleBody,
     ArticleHead,
     ArticleInfo,
-    Contents,
 } from 'styles/board/BoardDetail.style';
-import { CancelButton, SelectBox, TitleInput } from 'styles/board/BoardWrite.style';
-import { SubmitButton } from '../../styles/board/BoardWrite.style';
+import { CancelButton, Quill, SelectBox, TitleInput } from 'styles/board/BoardWrite.style';
+import { SubmitButton, Contents } from '../../styles/board/BoardWrite.style';
 import boardWriteAPI from 'store/apis/board';
 import useDebounce from '../../hooks/useDebounce';
 import { topicActions } from 'store/modules/topic';
@@ -82,7 +81,7 @@ const BoardWrite = () => {
             </ArticleHead>
             <ArticleBody>
                 <Article>
-                    <ReactQuill
+                    <Quill
                         name="content"
                         theme="snow"
                         ref={quillRef}

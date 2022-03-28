@@ -3,6 +3,7 @@ import { handleActions } from 'redux-actions';
 import produce from 'immer';
 
 export const loginActions = createRequestAction('LOGIN');
+export const logoutActions = createRequestAction('LOGOUT');
 
 const initialState = {
     loginSuccess: false,
@@ -29,6 +30,20 @@ const reducer = handleActions(
                 draft.loginError = action.payload.error;
             });
         },
+        [logoutActions.REQUEST]: (state, _action) => state,
+        [logoutActions.SUCCESS]: (state, action) => {
+            return produce(state, (draft) => {
+                draft.loginSuccess = false;
+                draft.token = '';
+                draft.text = '로그아웃 되었습니다.';
+                draft.id = '';
+            })
+        },
+        [logoutActions.FAILURE]: (state, action) => {
+            return produce(state, (draft) => {
+                draft.loginError = '';
+            });
+        }
     },
     initialState,
 );
