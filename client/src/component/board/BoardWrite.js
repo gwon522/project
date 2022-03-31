@@ -9,10 +9,11 @@ import {
     ArticleInfo,
 } from 'styles/board/BoardDetail.style';
 import { CancelButton, Quill, SelectBox, TitleInput, SubmitButton, Contents } from 'styles/board/BoardWrite.style';
-import boardWriteAPI from 'store/apis/board';
+import { boardWriteAPI } from 'store/apis/board';
 import { useDebounce, useConfirm } from 'hooks/index';
 import { topicActions } from 'store/modules/topic';
 import { topicListSelector, userIdSelector } from 'utils/selector';
+import { useHistory } from 'react-router-dom';
 
 
 const modules = {
@@ -25,10 +26,11 @@ const modules = {
 const BoardWrite = () => {
     const topicList = useSelector(topicListSelector);
     const userId = useSelector(userIdSelector);
+    const history = useHistory();
     const dispatch = useDispatch();
     const [topic, setTopic] = useState(1);
-    const quillRef = useRef();
     const [title, setTitle] = useState('');
+    const quillRef = useRef();
     const debounceTitle = useDebounce(title, 300);
 
     const submitHandler = () => {
@@ -38,7 +40,8 @@ const BoardWrite = () => {
             b_category: topic,
             u_id: userId //로그인 기능구현하면 useSelect에서 가져다쓰거나 로컬스토리지에 저장햇다가 불러오기 
         }
-        boardWriteAPI(sendData).then(result => console.log(result));
+
+        boardWriteAPI(sendData).then(result => history.push(`/post/${result.insertId}`));
         // console.log(quillRef.current.getEditor().clipboard);
     }
     const cancelHandler = useConfirm('글작성을 취소하시겠습니까?', () => { console.log('삭제처리') });

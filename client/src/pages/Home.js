@@ -5,6 +5,10 @@ import { ArticleList, Main, MainWrap } from 'styles/Home.style';
 import { BestTopics, Topics } from 'component/Topic/index'
 import { useSelector, useDispatch } from 'react-redux';
 import { topicActions } from '../store/modules/topic';
+import { Chart } from 'component/Aside/Chart';
+import { RankData } from "utils/TempData";
+import { ChartItem } from '../component/Aside/ChartItem';
+import { Banner } from 'component/Aside/Banner';
 
 //메인화면
 const HomeComponent = () => {
@@ -28,7 +32,12 @@ const HomeComponent = () => {
                     }
                 </ArticleList>
             </Main>
-            <Aside />
+            <Aside>
+                <Banner />
+                <Chart>
+                    {RankData.map(data => <ChartItem key={data.seq} data={data} />)}
+                </Chart>
+            </Aside>
         </MainWrap>
     );
 }
