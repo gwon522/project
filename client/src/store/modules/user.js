@@ -8,7 +8,7 @@ export const logoutActions = createRequestAction('LOGOUT');
 const initialState = {
     loginSuccess: false,
     token: '',
-    id: '',
+    u_id: '',
     loginError: '',
     text: '',
     type: ''
@@ -22,7 +22,7 @@ const reducer = handleActions(
                 draft.loginSuccess = action.payload.result.loginSuccess;
                 draft.token = action.payload.result.token;
                 draft.text = action.payload.result.text;
-                draft.id = action.payload.result.id;
+                draft.u_id = action.payload.result.u_id;
             });
         },
         [loginActions.FAILURE]: (state, action) => {
@@ -36,7 +36,7 @@ const reducer = handleActions(
                 draft.loginSuccess = false;
                 draft.token = '';
                 draft.text = '로그아웃 되었습니다.';
-                draft.id = '';
+                draft.u_id = '';
             })
         },
         [logoutActions.FAILURE]: (state, action) => {

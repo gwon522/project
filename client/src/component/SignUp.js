@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SignUpAPI, CheckDuplicateIdAPI } from 'store/apis/user';
 import { Button, Input, LoginTitle, LoginContainer, InputTop, InputBottom, TextBox } from 'styles/Login.style';
-import useDebounce from '../hooks/useDebounce';
+import { useDebounce } from 'hooks/index';
 import { useHistory } from 'react-router-dom';
 
 export const SignUp = () => {
