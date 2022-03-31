@@ -53,7 +53,7 @@ router.post('/Login', (req, res) => {
             const responseData = {
                 loginSuccess: false,
                 token: '',
-                id: '',
+                u_id: '',
                 text: '아이디가 존재하지 않습니다.',
             }
             res.send(responseData);
@@ -70,7 +70,7 @@ router.post('/Login', (req, res) => {
                     loginSuccess: true,
                     token: token,
                     text: '',
-                    id: result[0].u_id
+                    u_id: result[0].u_id
                 }
                 res.cookie('user', token);
                 res.send(responseData);
@@ -78,7 +78,7 @@ router.post('/Login', (req, res) => {
                 const responseData = {
                     loginSuccess: false,
                     token: '',
-                    id: '',
+                    u_id: '',
                     text: '비밀번호가 일치하지 않습니다.'
                 }
                 res.send(responseData);
