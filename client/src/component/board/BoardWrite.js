@@ -8,11 +8,11 @@ import {
     ArticleHead,
     ArticleInfo,
 } from 'styles/board/BoardDetail.style';
-import { CancelButton, Quill, SelectBox, TitleInput } from 'styles/board/BoardWrite.style';
-import { SubmitButton, Contents } from '../../styles/board/BoardWrite.style';
+import { CancelButton, Quill, SelectBox, TitleInput, SubmitButton, Contents } from 'styles/board/BoardWrite.style';
 import boardWriteAPI from 'store/apis/board';
-import useDebounce from '../../hooks/useDebounce';
+import { useDebounce, useConfirm } from 'hooks/index';
 import { topicActions } from 'store/modules/topic';
+import { topicListSelector, userIdSelector } from 'utils/selector';
 
 
 const modules = {
@@ -23,7 +23,8 @@ const modules = {
 
 //게시판 글작성
 const BoardWrite = () => {
-    const topicList = useSelector((state) => state.topic.result);
+    const topicList = useSelector(topicListSelector);
+    const userId = useSelector(userIdSelector);
     const dispatch = useDispatch();
     const [topic, setTopic] = useState(1);
     const quillRef = useRef();
@@ -31,16 +32,16 @@ const BoardWrite = () => {
     const debounceTitle = useDebounce(title, 300);
 
     const submitHandler = () => {
-        // text 작성한것
         const sendData = {
-            b_itle: debounceTitle,
+            b_title: debounceTitle,
             b_content: quillRef.current.getEditor().getText(),
             b_category: topic,
-            u_id: 1 //로그인 기능구현하면 useSelect에서 가져다쓰거나 로컬스토리지에 저장햇다가 불러오기 
+            u_id: userId //로그인 기능구현하면 useSelect에서 가져다쓰거나 로컬스토리지에 저장햇다가 불러오기 
         }
         boardWriteAPI(sendData).then(result => console.log(result));
         // console.log(quillRef.current.getEditor().clipboard);
     }
+    const cancelHandler = useConfirm('글작성을 취소하시겠습니까?', () => { console.log('삭제처리') });
 
     const selectBoxChange = (e) => {
         setTopic(e.target.value);
@@ -93,7 +94,7 @@ const BoardWrite = () => {
                     <SubmitButton type='button' onClick={submitHandler}>
                         글쓰기
                     </SubmitButton>
-                    <CancelButton type="button">취소</CancelButton>
+                    <CancelButton type="button" onClick={cancelHandler}>취소</CancelButton>
                 </ArticleInfo>
             </ArticleBody>
         </Contents>
