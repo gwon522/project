@@ -1,11 +1,12 @@
 import React from "react";
 import { ArticleListPreView, BoardLink, CommentLink, CompanyName, ContentLink, Detail, Image, ImageLink, ImageWrap, LikeLink, ScrapeLink, SubWrap, TimeLink, Title, TitleWrap, ViewLink } from "styles/board/BoardItem.style";
 import { InfoFnc, StyledLink, WrapInfo } from 'styles/Global.style';
+import calculateDate from "utils/dateCalc";
 
 //게시판 목록의 item
 const BoardItem = (props) => {
     const image = props.item.image;
-    const { b_id, b_title, b_content, b_view, likes, u_company, comment } = props.item;
+    const { b_id, b_title, b_content, b_view, likes, u_company, comment, b_date } = props.item;
 
     return (
         <ArticleListPreView>
@@ -35,7 +36,7 @@ const BoardItem = (props) => {
                     <LikeLink to={`/post/${b_id}`}>{likes}</LikeLink>
                     <CommentLink to={`/post/${b_id}`}>{comment}</CommentLink>
                     <InfoFnc>
-                        <TimeLink to="/">40분</TimeLink>
+                        <TimeLink to="/">{calculateDate(b_date)}</TimeLink>
                         <ScrapeLink to="/" />
                     </InfoFnc>
                 </WrapInfo>

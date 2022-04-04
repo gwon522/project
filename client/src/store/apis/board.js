@@ -9,3 +9,6 @@ export async function boardWriteAPI(sendData) {
 export default async function boardListAPI(sendData) {
     return await axios.post('/api/topic/:id', sendData).then(result => result.data);
 }
+export async function boardDetailAPI(sendData) {
+    return await axios.get('/api/post/:id', { params: sendData }).then(result => result.data[0]);
+}

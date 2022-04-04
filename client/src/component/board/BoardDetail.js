@@ -1,5 +1,7 @@
 import { Comment, ReComment } from 'component/index';
-import { ReplyArea, ReplyButton } from 'styles/board/BoardDetail.style';
+import Spinner from 'component/Spinner';
+import { useEffect, useState } from 'react';
+import { boardDetailAPI } from 'store/apis/board';
 import {
     Article,
     ArticleBody,
@@ -11,6 +13,7 @@ import {
     LikeLink,
     Name,
     TopicLink,
+    ReplyArea, ReplyButton
 } from 'styles/board/BoardDetail.style';
 import {
     FuncSpan,
@@ -21,39 +24,50 @@ import {
 } from 'styles/Global.style';
 
 //게시판 상세글
-const BoardDetail = () => {
+const BoardDetail = (props) => {
+    const id = props.id;
+    const [detailData, setDetailData] = useState('');
+    useEffect(() => {
+        const settingData = async (param) => {
+            setDetailData(await boardDetailAPI({ id: param }));
+        }
+        settingData(id);
+    }, [id]);
+
+    console.log(detailData);
     return (
         <Contents>
+            {!detailData && <Spinner />}
             <ArticleHead>
                 <h1>
                     <StyledLink to="/topic/all">토픽</StyledLink>
-                    <TopicLink to="/topic/블라블라">블라블라</TopicLink>
+                    <TopicLink to={`/topic/${detailData.b_category}`}>{detailData.cd_name}</TopicLink>
                 </h1>
-                <h2>제목부분</h2>
+                <h2>{detailData.b_title}</h2>
                 <Name>
                     <StyledLink style={NameColor} to="/">
                         직장명
-                    </StyledLink>{' '}
-                    · 아이디
+                    </StyledLink>
+                    {' '}· 아이디
                 </Name>
                 <WrapInfo func="detail">
-                    <FuncSpan func="time">시간</FuncSpan>
-                    <FuncSpan func="view">뷰</FuncSpan>
-                    <FuncSpan func="cmt">코멘트</FuncSpan>
+                    <FuncSpan func="time">{detailData.b_date}</FuncSpan>
+                    <FuncSpan func="view">{detailData.b_view}</FuncSpan>
+                    <FuncSpan func="cmt">{detailData.comment}</FuncSpan>
                     <InfoFnc func="detail">
                         <FuncSpan func="bookmark" />
                     </InfoFnc>
                 </WrapInfo>
             </ArticleHead>
             <ArticleBody>
-                <Article>글을 여기다 작성 </Article>
+                <Article>{detailData.b_content}</Article>
                 <ArticleInfo>
-                    <LikeLink to="/">좋아요</LikeLink>
+                    <LikeLink to="/">{detailData.likes}</LikeLink>
                     <CommentLink to="/">코멘트</CommentLink>
                 </ArticleInfo>
             </ArticleBody>
             <ArticleComment>
-                <h3>댓글 cnt</h3>
+                <h3>댓글 {detailData.comment}</h3>
                 <div>
                     <ReplyArea>
                         <ReplyButton>댓글을 남겨주세요.</ReplyButton>

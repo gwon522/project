@@ -6,11 +6,11 @@ import { Aside } from "component/index";
 
 
 //게시판 상세 화면
-const BoardDetailPage = () => {
+const BoardDetailPage = (props) => {
     return (
         <BoardDetailWrap>
-            <BoardDetail />
-            <Aside />
+            <BoardDetail id={props.match.params.id} />
+            <Aside id={props.match.params.id} />
         </BoardDetailWrap>
     )
 }

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { boardActions } from 'store/modules/board';
 import { boardSelector } from 'utils/selector';
+import Spinner from 'component/Spinner';
 
 const ArticleList = styled.div`
     display: flex;
@@ -22,6 +23,7 @@ const BoardList = (props) => {
     //무한스크롤 적용하려면 데이터 가지고있는거에 추가하는게 유리한가?
     const dispatch = useDispatch();
     const boardList = useSelector(boardSelector);
+    const loading = useSelector(state => state.loading.BOARD);
     const [sort, setSort] = useState('');
     const [pagenation, setPagenation] = useState(0);
 
@@ -32,17 +34,26 @@ const BoardList = (props) => {
             start: pagenation,
             sort: sort
         }
+        console.log('data요청', sendData);
         dispatch(boardActions.request(sendData));
     }, [dispatch, pagenation, sort, topicName]);
 
+    if (loading) {
+        return (
+            <ArticleList>
+                <Spinner />
+            </ArticleList>
+        )
+    }
 
-    //boardItem에 토픽명칭만 넣어서 찾아주기
     return (
         <ArticleList>
             {boardList &&
                 boardList.map((item, index) => {
                     return <BoardItem key={index} item={item} />;
-                })}
+                })
+            }
+            {!boardList && <div>게시글이 없음</div>}
         </ArticleList>
     );
 };
