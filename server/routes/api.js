@@ -54,7 +54,7 @@ router.post('/topic/:id', (req, res) => {
     const id = req.body.id;
     const sort = req.body.sort;
 
-    let sql = 'select b_id, b_title, b_content,b_view,likes, (select count(*) from comment_tb where b_id = a.b_id) as comment, u_company from board_tb a, user_tb b, mst_cd_dtl_tb c where a.u_id = b.u_id and a.b_category = c.cd_id';
+    let sql = 'select b_id, b_title, b_content,b_view,likes, timeStamp(b_date) as b_date, (select count(*) from comment_tb where b_id = a.b_id) as comment, u_company from board_tb a left outer join user_tb b on a.u_id = b.u_id inner join mst_cd_dtl_tb c on a.b_category = c.cd_id where 1 =1 ';
     //토픽id가 베스트토픽일때는 모든글에서 뷰가 제일 높은거로 50개 조회해오기
     if (id === '베스트토픽') {
         sql += 'order by b_view desc';
@@ -66,7 +66,7 @@ router.post('/topic/:id', (req, res) => {
         if (id === '베스트토픽') {
             sql += sort === 'new' ? ', b_date desc' : ', b_view desc';
         } else {
-            sql += sort === 'new' ? `order by b_date desc` : `order by b_view desc`;
+            sql += sort !== 'view' ? `order by b_date desc` : `order by b_view desc`;
         }
     }
     //페이지네이션 param들어오면 start, end 값 변경
@@ -83,16 +83,18 @@ router.post('/topic/:id', (req, res) => {
     });
 });
 
-//게시물 조회시
+//게시물 상세 조회시
 router.get('/post/:id', (req, res) => {
     // 세부내용에 얽혀있는 코멘트들도 같이 가져와야함 => 코멘트 따로 불러와야하나
-    db.query(`select * from board_tb where b_id=${id}`);
+    const id = req.query.id;
+    db.query(`select b_id, b_category, u_id, b_title, b_content, b_view, DATE_FORMAT(b_date, '%m-%d') AS b_date, likes, cd_name, (select count(*) from comment_tb where b_id = a.b_id) as comment from board_tb a, mst_cd_dtl_tb b where b_id=${id} and a.b_category = b.cd_id`, id, (err, result) => {
+        res.send(result);
+    });
 });
 
 //게시물 작성 요청(게시물 작성화면은 FRONT에서)
 router.post('/write', (req, res) => {
     const querySet = req.body;
-    console.log(querySet);
     db.query(`insert into board_tb set ?`, querySet, (err, result) => {
         if (err) {
             console.log('write error 발생');
@@ -103,7 +105,14 @@ router.post('/write', (req, res) => {
 });
 
 //게시물 수정시
-router.put('/post/:id', (req, res) => {
-
+router.put(' /post/:id', (req, res) => {
+    const querySet = req.body;
+    db.query(`UPDATE board_tb SET b_title = ? WHERE b_id = ?`, (err, result) => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+        res.send(result);
+    })
 })
 module.exports = router;
