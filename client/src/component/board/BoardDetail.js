@@ -33,22 +33,22 @@ const BoardDetail = (props) => {
         }
         settingData(id);
     }, [id]);
+    //좋아요 누르면 좋아요 올라가는 기능만들기? or 서버에서 처리?
 
-    console.log(detailData);
     return (
         <Contents>
             {!detailData && <Spinner />}
             <ArticleHead>
                 <h1>
                     <StyledLink to="/topic/all">토픽</StyledLink>
-                    <TopicLink to={`/topic/${detailData.b_category}`}>{detailData.cd_name}</TopicLink>
+                    <TopicLink to={`/topic/${detailData.cd_name}`}>{detailData.cd_name}</TopicLink>
                 </h1>
                 <h2>{detailData.b_title}</h2>
                 <Name>
                     <StyledLink style={NameColor} to="/">
-                        직장명
+                        {detailData.company}
                     </StyledLink>
-                    {' '}· 아이디
+                    {' '}· {detailData.nickNm}
                 </Name>
                 <WrapInfo func="detail">
                     <FuncSpan func="time">{detailData.b_date}</FuncSpan>
@@ -62,8 +62,8 @@ const BoardDetail = (props) => {
             <ArticleBody>
                 <Article>{detailData.b_content}</Article>
                 <ArticleInfo>
-                    <LikeLink to="/">{detailData.likes}</LikeLink>
-                    <CommentLink to="/">코멘트</CommentLink>
+                    <LikeLink to="#">{detailData.likes}</LikeLink>
+                    <CommentLink to="#">{detailData.comment}</CommentLink>
                 </ArticleInfo>
             </ArticleBody>
             <ArticleComment>
@@ -76,7 +76,7 @@ const BoardDetail = (props) => {
                         //코멘트에 해당글의 ID를 주어서 코멘트 테이블에서 불러오기
                         //RECOMENT 처리 어떻게 할지 생각
                     }
-                    <Comment />
+                    <Comment id={id} />
                     <ReComment />
                 </div>
             </ArticleComment>

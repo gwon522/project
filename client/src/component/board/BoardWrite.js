@@ -42,7 +42,6 @@ const BoardWrite = () => {
         }
 
         boardWriteAPI(sendData).then(result => history.push(`/post/${result.insertId}`));
-        // console.log(quillRef.current.getEditor().clipboard);
     }
     const cancelHandler = useConfirm('글작성을 취소하시겠습니까?', () => { console.log('삭제처리') });
 

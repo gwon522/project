@@ -8,7 +8,7 @@ import rootSaga from './sagas/index';
 
 export default function configureStore() {
     const sagaMiddleware = cretaeSagaMiddleware();
-    const middlewares = [sagaMiddleware, logger];
+    const middlewares = [sagaMiddleware];//logger
     const store = createStore(
         rootReducer,
         composeWithDevTools(applyMiddleware(...middlewares)),

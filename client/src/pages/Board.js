@@ -8,7 +8,7 @@ import { ArticleList, BoardWrap } from 'styles/board/Board.style';
 const Board = (props) => {
     return (
         <BoardWrap>
-            <BoardCarousel />
+            <BoardCarousel id={props.match.params.id} />
             <ArticleList>
                 <BoardList id={props.match.params.id} />
             </ArticleList>

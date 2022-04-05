@@ -20,7 +20,7 @@ export const Search = () => {
         }
     }
     const dataSearch = () => {
-        searchValue.trim() === '' ? alert('검색어를 입력해주세요') : console.log('빈값이 아님')
+        searchValue.trim() === '' && alert('검색어를 입력해주세요');
 
     }
     return (

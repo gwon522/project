@@ -38,9 +38,9 @@ const ReCommentButton = styled(CommentButton)`
 export const ReComment = (props) => {
     return (
         <ReCommentWrap>
-            <ReCommentButton>
+            {/* <ReCommentButton>
                 +대댓글 cnt개 더보기
-            </ReCommentButton>
+            </ReCommentButton> */}
             {
                 //대댓글 수만큼 반복
             }

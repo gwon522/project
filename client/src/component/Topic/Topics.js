@@ -17,7 +17,6 @@ export const Topics = (props) => {
         TopicListAPI(sendData).then(result => setTopicList(result));
     }, [cd_id])
 
-
     return (
         <Topic>
             <Title><FaCrown style={styleds.faIcon} />{cd_name}</Title>

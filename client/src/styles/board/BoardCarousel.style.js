@@ -57,22 +57,26 @@ export const StyledSlider = styled(Slider)`
 export const CarouselLink = styled(StyledLink)`
     @media screen and (min-width:1100px){
         font-weight:700;
-        color:#222;
+        color:${(props) => props.cd_name === props.props ? '#222' : '#94969b'};
+        &:active, &:hover{
+            color:#222;
+            border-bottom: #222;
+        }
     }
 `
 export const SortWrap = styled.div`
-    
-    @media screen and (min-width:1100px){
-        position: relative;
-        width: 132px;
+
+@media screen and(min-width: 1100px){
+    position: relative;
+    width: 132px;
         &:before{
-            position: absolute;
-            top: 4px;
-            left: 0;
-            width: 1px;
-            height: 12px;
-            background: #ccc;
-            content: "";
-        }
+        position: absolute;
+        top: 4px;
+        left: 0;
+        width: 1px;
+        height: 12px;
+        background: #ccc;
+        content: "";
     }
+}
 `

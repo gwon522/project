@@ -34,7 +34,6 @@ const BoardList = (props) => {
             start: pagenation,
             sort: sort
         }
-        console.log('data요청', sendData);
         dispatch(boardActions.request(sendData));
     }, [dispatch, pagenation, sort, topicName]);
 

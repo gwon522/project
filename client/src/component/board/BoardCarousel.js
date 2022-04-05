@@ -10,17 +10,19 @@ import {
 
 //게시판 목록(carousel)
 const BoardCarousel = (props) => {
+    const id = props.id;
     const topicList = useSelector((state) => state.topic.result);
     const dispatch = useDispatch();
     useEffect(() => {
         // if (topicList) return;
         dispatch(topicActions.request());
+
     }, [dispatch]);
 
     const settings = {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 300,
         slidesToShow: 10,
         slidesToScroll: 1,
         focusOnSelect: true,
@@ -31,8 +33,8 @@ const BoardCarousel = (props) => {
         <CarouselWrap>
             <StyledSlider {...settings} style={{ width: '90%' }}>
                 {topicList.map((item) => (
-                    <div key={item.cd_id}>
-                        <CarouselLink to={`/topic/${item.cd_name}`}>
+                    <div key={item.cd_id} to={`/topic/${item.cd_name}`}>
+                        <CarouselLink to={`/topic/${item.cd_name}`} cd_name={item.cd_name} props={id} >
                             {item.cd_name}
                         </CarouselLink>
                     </div>
@@ -43,7 +45,7 @@ const BoardCarousel = (props) => {
                     <a href="/">설정값</a>
                 </span>
             </SortWrap>
-        </CarouselWrap>
+        </CarouselWrap >
     );
 };
 

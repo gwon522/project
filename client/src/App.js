@@ -3,15 +3,11 @@ import { Header, Footer } from 'component/index'
 import { Route, Switch } from 'react-router-dom';
 import { Layout, MainContainer } from 'styles/Global.style';
 import { Board, Home, Login, NotFound, Signup, BoardDetail, Write } from './pages/index';
-import { useSelector } from 'react-redux';
-import { loginResultSelector } from 'utils/selector';
 import PublicRoute from 'lib/PublicRoute';
 import PrivateRoute from 'lib/PrivateRoute';
 
 
 const App = () => {
-  const isLogin = useSelector(loginResultSelector);
-  console.log('login체크', isLogin);
   const ScrollToTop = () => {
     window.scrollTo(0, 0);
     return null;
