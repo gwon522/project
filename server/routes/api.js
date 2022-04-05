@@ -87,7 +87,43 @@ router.post('/topic/:id', (req, res) => {
 router.get('/post/:id', (req, res) => {
     // 세부내용에 얽혀있는 코멘트들도 같이 가져와야함 => 코멘트 따로 불러와야하나
     const id = req.query.id;
-    db.query(`select b_id, b_category, u_id, b_title, b_content, b_view, DATE_FORMAT(b_date, '%m-%d') AS b_date, likes, cd_name, (select count(*) from comment_tb where b_id = a.b_id) as comment from board_tb a, mst_cd_dtl_tb b where b_id=${id} and a.b_category = b.cd_id`, id, (err, result) => {
+    db.query(`UPDATE board_tb SET b_view = b_view + 1 WHERE b_id = ?`, id, (err, result) => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+    })
+
+    db.query(
+        `select
+        b_id,
+        b_category,
+        a.u_id,
+        b_title,
+        b_content,
+        b_view,
+        DATE_FORMAT(b_date, '%m-%d') AS b_date,
+        likes,
+        cd_name,
+        (
+        select
+            count(*)
+        from
+            comment_tb
+        where
+            b_id = a.b_id) as comment,
+        IFNULL(u_company,'비공개') as company,
+        IFNULL(u_nickNm,'') as nickNm
+    from
+        board_tb a
+    left outer join
+        user_tb c
+    on a.u_id = c.u_id
+    inner join 
+        mst_cd_dtl_tb b
+    on a.b_category = b.cd_id 
+    where b_id = ?
+    `, id, (err, result) => {
         res.send(result);
     });
 });
@@ -105,7 +141,7 @@ router.post('/write', (req, res) => {
 });
 
 //게시물 수정시
-router.put(' /post/:id', (req, res) => {
+router.put('/post/:id', (req, res) => {
     const querySet = req.body;
     db.query(`UPDATE board_tb SET b_title = ? WHERE b_id = ?`, (err, result) => {
         if (err) {
