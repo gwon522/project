@@ -6,8 +6,9 @@ const cors = require('cors');
 const api = require('./routes/api');
 const user = require('./routes/user');
 
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send("hi");
