@@ -45,10 +45,10 @@ const BoardDetail = (props) => {
                 </h1>
                 <h2>{detailData.b_title}</h2>
                 <Name>
-                    <StyledLink style={NameColor} to="/">
-                        {detailData.company}
+                    <StyledLink style={NameColor} to="#">
+                        {detailData.company === '' ? '비공개' : detailData.company}
                     </StyledLink>
-                    {' '}· {detailData.nickNm}
+                    {' '}· {detailData.nickNm === "" ? '탈퇴회원' : detailData.nickNm}
                 </Name>
                 <WrapInfo func="detail">
                     <FuncSpan func="time">{detailData.b_date}</FuncSpan>

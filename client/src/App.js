@@ -5,9 +5,13 @@ import { Layout, MainContainer } from 'styles/Global.style';
 import { Board, Home, Login, NotFound, Signup, BoardDetail, Write } from './pages/index';
 import PublicRoute from 'lib/PublicRoute';
 import PrivateRoute from 'lib/PrivateRoute';
+import { useSelector } from 'react-redux';
 
 
 const App = () => {
+  //새로고침시 로그인 중이면 유지시키는 코드 추가해야함
+  // const temp = useSelector(state => state.user);
+  // console.log(temp);
   const ScrollToTop = () => {
     window.scrollTo(0, 0);
     return null;
@@ -24,6 +28,10 @@ const App = () => {
           <PublicRoute component={Board} path="/topic/:id" />
           <PublicRoute component={BoardDetail} path="/post/:id" />
           <PrivateRoute component={Write} path="/write" />
+          {
+            //수정페이지
+          }
+          <PrivateRoute component={Write} path="/:id" />
           <PublicRoute component={NotFound} path="*" status={404} />
           {/* <Route path="*" component={NotFound} status={404} /> */}
         </Switch>
